@@ -1,0 +1,18 @@
+# Logs y temporales de Vivado
+*.jou
+*.log
+*.str
+*.dmp
+*.zip
+
+# Carpetas pesadas de compilación, simulación y caché
+.Xil/
+*.cache/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
+
+# Archivos ocultos del sistema operativo
+.DS_Store
+Thumbs.db
