@@ -25,7 +25,7 @@ architecture behavior of tb_Convolution is
     -- Señales de salida
     signal T_ready_out : std_logic;
     signal T_valid_out : std_logic;
-    signal data_out    : std_logic_vector((C_Data_length*Bits)-1 downto 0);
+    signal data_out    : std_logic_vector((4224)-1 downto 0);
 
     -- Definición del periodo de reloj
     constant clk_period : time := 10 ns;

@@ -14,7 +14,7 @@ entity Convolution is
         Bus_valid_Size                        : in std_logic_vector(2 downto 0);
         Padding, kernel, Stride               : in std_logic_vector(1 downto 0);
         T_ready_out, T_valid_out              : out std_logic;
-        data_out : out std_logic_vector((Data_length*Bits)-1 downto 0)        
+        data_out : out std_logic_vector((4224)-1 downto 0)        
     );
 end Convolution;
 
@@ -210,7 +210,7 @@ begin
    Serial_Parallel_Register : entity work.Registro_serie_paralelo
     generic map(
         DATA_WIDTH => 32,
-        TOTAL_WIDTH => 1024
+        TOTAL_WIDTH => 4224
     )
     port map(
         clk => clk,

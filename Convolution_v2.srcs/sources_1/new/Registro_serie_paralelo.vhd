@@ -5,7 +5,7 @@ use IEEE.NUMERIC_STD.ALL;
 entity Registro_serie_paralelo is
     generic (
         DATA_WIDTH  : integer := 32;
-        TOTAL_WIDTH : integer := 1024
+        TOTAL_WIDTH : integer := 4224
     );
     port (
         clk      : in std_logic;

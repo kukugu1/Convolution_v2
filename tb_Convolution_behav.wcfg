@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="6,194.190 ns"></ZoomStartTime>
-      <ZoomEndTime time="6,373.444 ns"></ZoomEndTime>
-      <Cursor1Time time="6,230.000 ns"></Cursor1Time>
+      <ZoomStartTime time="7,421.840 ns"></ZoomStartTime>
+      <ZoomEndTime time="7,588.638 ns"></ZoomEndTime>
+      <Cursor1Time time="7,480.831 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="259"></NameColumnWidth>
-      <ValueColumnWidth column_width="72"></ValueColumnWidth>
+      <NameColumnWidth column_width="229"></NameColumnWidth>
+      <ValueColumnWidth column_width="90"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="9" />
    <wvobject fp_name="/tb_Convolution/clk" type="logic">
@@ -170,7 +170,6 @@
    <wvobject fp_name="group536" type="group">
       <obj_property name="label">VALID DATA</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_Convolution/uut/VD/Est" type="other">
          <obj_property name="ElementShortName">Est</obj_property>
          <obj_property name="ObjectShortName">Est</obj_property>
@@ -342,7 +341,7 @@
       <wvobject fp_name="/tb_Convolution/T_valid_out" type="logic">
          <obj_property name="ElementShortName">T_valid_out</obj_property>
          <obj_property name="ObjectShortName">T_valid_out</obj_property>
-         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_Convolution/uut/CBO/x" type="other">
@@ -364,18 +363,19 @@
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_Convolution/uut/Serial_Parallel_Register/shift_reg" type="array">
-         <obj_property name="ElementShortName">shift_reg[1023:0]</obj_property>
-         <obj_property name="ObjectShortName">shift_reg[1023:0]</obj_property>
+         <obj_property name="ElementShortName">shift_reg[4223:0]</obj_property>
+         <obj_property name="ObjectShortName">shift_reg[4223:0]</obj_property>
          <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_Convolution/data_out" type="array">
-         <obj_property name="ElementShortName">data_out[1023:0]</obj_property>
-         <obj_property name="ObjectShortName">data_out[1023:0]</obj_property>
-         <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+         <obj_property name="ElementShortName">data_out[4223:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out[4223:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FF00</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="Reversed">false</obj_property>
       </wvobject>
    </wvobject>
 </wave_config>
