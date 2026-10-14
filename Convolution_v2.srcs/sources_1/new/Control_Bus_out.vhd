@@ -22,6 +22,7 @@ signal x : integer := 0;
 --     Bus_valid_Size <= "010" -- Tamaño de imagen 32x32
 --     Bus_valid_Size <= "011" -- Tamaño de imagen 64x64
 --     Bus_valid_Size <= "100" -- Tamaño de imagen 128x128
+--     else           <= "100" -- Tamaño de imagen 128x128 (Valor invalido)
 
 --     kernel <= "00" -- kernel 2x2
 --     kernel <= "01" -- kernel 3x3
@@ -31,25 +32,26 @@ signal x : integer := 0;
 --     Padding <= "00" -- Padding de 0
 --     Padding <= "01" -- Padding de 1
 --     Padding <= "10" -- Padding de 2
+--     Padding <= "11" -- Padding de 0 (Valor invalido)
 
---     Stride <= "00" -- Stride de 0
+--     Stride <= "00" -- Stride de 1 (Valor invalido)
 --     Stride <= "01" -- Stride de 1
 --     Stride <= "10" -- Stride de 2
 --     Stride <= "11" -- Stride de 3
 
 begin
-    imagen_size <= 8 when Bus_valid_Size = "000" else 16 when Bus_valid_Size = "001" else
-                   32 when Bus_valid_Size = "010" else 64 when Bus_valid_Size = "011" else
-                   128 when Bus_valid_Size = "100" else 0;
+    imagen_size  <= 8 when Bus_valid_Size = "000" else 16 when Bus_valid_Size = "001" else
+                    32 when Bus_valid_Size = "010" else 64 when Bus_valid_Size = "011" else
+                    128 when Bus_valid_Size = "100" else 128;
                    
-    kernel_size <= 2 when kernel = "00" else 3 when kernel = "01" else 
-                   4 when kernel = "10" else 5 when kernel = "11";
+    kernel_size  <= 2 when kernel = "00" else 3 when kernel = "01" else
+                    4 when kernel = "10" else 5 when kernel = "11";
     
     Padding_size <= 0 when Padding = "00" else 1 when Padding = "01" else
                     2 when Padding = "10" else 0;
                     
-    Stride_size <= 0 when Stride = "00" else 1 when Stride = "01" else                
-                   2 when Stride = "10" else 3 when Stride = "11";
+    Stride_size  <= 2 when Stride = "10" else 3 when Stride = "11" else
+                    1;
                     
     process(clk)
     begin

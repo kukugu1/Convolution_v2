@@ -24,7 +24,7 @@ signal rst_RPS, CAP_RPS, SEL        : std_logic;
 signal rst_RSP, CAP_RSP, WAIT_0     : std_logic;
 signal clk_EN_1M, clk_EN_1K         : std_logic;
 signal Data_out_RPS                 : std_logic_vector(7 downto 0) := x"00";
-signal Data_in_RSP                  : std_logic_vector(7 downto 0);
+signal Data_in_RSP                  : std_logic_vector(31 downto 0);
 signal Salida_Mask_Adder_Tree       : std_logic_vector(21 downto 0);
 signal kernel_in, matriz_in         : std_logic_vector(7 downto 0) := x"00";
 signal AdderTree_Enable, SR_Capture, VALID_OUT : std_logic;
@@ -179,36 +179,37 @@ begin
         Data_out      => Salida_Mask_Adder_Tree
     );
     
-    BaR : entity work.Bias_and_reduction
+    BaS : entity work.Bias_and_sum
     generic map(
-        Data_in_length => 22,
-        Bias_length => Bias_length 
+        Data_in_length  => 22,
+        Data_out_length => 32,
+        Bias_length     => Bias_length 
     )
     port map(
-        Bias => Bias,
-        Data_in => Salida_Mask_Adder_Tree,
+        Bias     => Bias,
+        Data_in  => Salida_Mask_Adder_Tree,
         Data_out => Data_in_RSP
     );
         
     CBO : entity work.Control_Bus_out
     port map(
-        clk => clk,
-        VALID_OUT => VALID_OUT,
-        T_ready => T_ready_in,
+        clk            => clk,
+        VALID_OUT      => VALID_OUT,
+        T_ready        => T_ready_in,
         Bus_valid_Size => Bus_valid_Size,
-        Padding => Padding,
-        kernel => kernel,
-        Stride => Stride,
-        rst => rst_RSP,
-        CAP => CAP_RSP,
-        EN_2 => EN_2,
-        T_valid => T_valid_out,
-        WAIT_0 => WAIT_0
+        Padding        => Padding,
+        kernel         => kernel,
+        Stride         => Stride,
+        rst            => rst_RSP,
+        CAP            => CAP_RSP,
+        EN_2           => EN_2,
+        T_valid        => T_valid_out,
+        WAIT_0         => WAIT_0
     );
 
    Serial_Parallel_Register : entity work.Registro_serie_paralelo
     generic map(
-        DATA_WIDTH => 8,
+        DATA_WIDTH => 32,
         TOTAL_WIDTH => 1024
     )
     port map(

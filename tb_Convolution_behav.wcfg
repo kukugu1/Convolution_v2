@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="6,106.640 ns"></ZoomStartTime>
-      <ZoomEndTime time="6,225.641 ns"></ZoomEndTime>
-      <Cursor1Time time="45.000 ns"></Cursor1Time>
+      <ZoomStartTime time="6,194.190 ns"></ZoomStartTime>
+      <ZoomEndTime time="6,373.444 ns"></ZoomEndTime>
+      <Cursor1Time time="6,230.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="265"></NameColumnWidth>
-      <ValueColumnWidth column_width="81"></ValueColumnWidth>
+      <NameColumnWidth column_width="259"></NameColumnWidth>
+      <ValueColumnWidth column_width="72"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="10" />
+   <WVObjectSize size="9" />
    <wvobject fp_name="/tb_Convolution/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -266,7 +266,7 @@
       </wvobject>
    </wvobject>
    <wvobject fp_name="group570" type="group">
-      <obj_property name="label">ADDER TREE y BaR</obj_property>
+      <obj_property name="label">ADDER TREE y BaS</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_Convolution/uut/AdderTree/Registros_kernel" type="array">
@@ -297,34 +297,12 @@
          <obj_property name="UseCustomSignalColor">true</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_Convolution/uut/Adder_Tree_Mask/Data_out" type="array">
-         <obj_property name="ElementShortName">Data_out[21:0]</obj_property>
-         <obj_property name="ObjectShortName">Data_out[21:0]</obj_property>
-         <obj_property name="CustomSignalColor">#800080</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-         <obj_property name="Radix">BINARYRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_Convolution/uut/BaR/Bias" type="array">
-         <obj_property name="ElementShortName">Bias[7:0]</obj_property>
-         <obj_property name="ObjectShortName">Bias[7:0]</obj_property>
-         <obj_property name="CustomSignalColor">#800080</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_Convolution/uut/BaR/Sum_result" type="array">
-         <obj_property name="ElementShortName">Sum_result[21:0]</obj_property>
-         <obj_property name="ObjectShortName">Sum_result[21:0]</obj_property>
-         <obj_property name="CustomSignalColor">#800080</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-         <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_Convolution/uut/BaR/Data_out" type="array">
-         <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="ElementShortName">Data_out[7:0]</obj_property>
-         <obj_property name="ObjectShortName">Data_out[7:0]</obj_property>
-         <obj_property name="CustomSignalColor">#800080</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
+      <wvobject fp_name="/tb_Convolution/uut/BaS/Data_out" type="array">
+         <obj_property name="ElementShortName">Data_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">Data_out[31:0]</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-         <obj_property name="label">Data_out_BaR[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group553" type="group">
@@ -374,12 +352,30 @@
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
    </wvobject>
-   <wvobject fp_name="/tb_Convolution/data_out" type="array">
-      <obj_property name="ElementShortName">data_out[1023:0]</obj_property>
-      <obj_property name="ObjectShortName">data_out[1023:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_Convolution/uut/Serial_Parallel_Register/data_in" type="array">
-      <obj_property name="ElementShortName">data_in[7:0]</obj_property>
-      <obj_property name="ObjectShortName">data_in[7:0]</obj_property>
+   <wvobject fp_name="group236" type="group">
+      <obj_property name="label">REGISTRO SERIE PARALELO</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_Convolution/uut/Serial_Parallel_Register/captured_data" type="array">
+         <obj_property name="ElementShortName">captured_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">captured_data[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/Serial_Parallel_Register/shift_reg" type="array">
+         <obj_property name="ElementShortName">shift_reg[1023:0]</obj_property>
+         <obj_property name="ObjectShortName">shift_reg[1023:0]</obj_property>
+         <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/data_out" type="array">
+         <obj_property name="ElementShortName">data_out[1023:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out[1023:0]</obj_property>
+         <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
    </wvobject>
 </wave_config>

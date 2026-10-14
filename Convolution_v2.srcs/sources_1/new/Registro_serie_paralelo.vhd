@@ -4,7 +4,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity Registro_serie_paralelo is
     generic (
-        DATA_WIDTH  : integer := 8;
+        DATA_WIDTH  : integer := 32;
         TOTAL_WIDTH : integer := 1024
     );
     port (
@@ -30,8 +30,9 @@ begin
                 shift_reg <= (others => '0');     
             elsif (load = '1') then
                 captured_data <= data_in;   
-            elsif (enable = '1') then
-                shift_reg <= shift_reg(TOTAL_WIDTH-DATA_WIDTH-1 downto 0) & captured_data;
+                if (enable = '1') then
+                    shift_reg <= shift_reg(TOTAL_WIDTH-DATA_WIDTH-1 downto 0) & captured_data;
+                end if;
             end if;
         end if;
     end process;

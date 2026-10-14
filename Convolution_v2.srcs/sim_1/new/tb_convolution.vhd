@@ -111,7 +111,7 @@ begin
         --5ta fila matriz
         wait for 140*clk_period;
         T_valid_in <= '1';
-        T_ready_in <= '1';
+        --T_ready_in <= '1';
 
         wait for 2*clk_period;
         T_valid_in <= '0';          
