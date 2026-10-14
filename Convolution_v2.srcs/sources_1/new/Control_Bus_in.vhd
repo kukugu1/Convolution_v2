@@ -12,12 +12,13 @@ entity Control_Bus_in is
         Bus_valid_Size         : in std_logic_vector(2 downto 0);
         Padding                : in std_logic_vector(1 downto 0);
         rst, CAP, SEL, T_ready : out std_logic;
-        EN_1                   : buffer std_logic
+        EN_1, EN_1K            : buffer std_logic
     );
 end Control_Bus_in;
 
 architecture Behavioral of Control_Bus_in is
-type estados is(E1,E2,E3,E4,E5,E6,E7,E8,E9,
+signal imagen_size, padding_size : integer;
+type estados is(ini,E1,E2,E3,E4,E5,E6,E7,E8,E9,
                 E10,E11,E12,E13,E14,E15,E16,E17,E18,E19,
                 E20,E21,E22,E23,E24,E25,E26,E27,E28,E29);
                 
@@ -34,17 +35,35 @@ signal x, y : integer range 0 to 132;
 --     Padding <= "10" -- Padding de 2
 
 begin
+
+    imagen_size <= 8 when Bus_valid_Size = "000" else 16 when Bus_valid_Size = "001" else
+                   32 when Bus_valid_Size = "010" else 64 when Bus_valid_Size = "011" else
+                   128 when Bus_valid_Size = "100" else 0;
+                   
+    padding_size <= 0 when Padding = "00" else 1 when Padding = "01" else 
+                    2 when Padding = "10" else 0;
+                   
     process(clk)
     begin
-        if falling_edge(clk) then
+        if rising_edge(clk) then
             case Est is
+                when ini =>
+                    rst <= '0';
+                    CAP <= '0';
+                    EN_1K <= '0';                    
+                    EN_1 <= '0';
+                    SEL <= '0';
+                    T_ready <= '0';   
+                    Est <= E1;
+                                    
                 when E1 => 
                     rst <= '1';
                     CAP <= '0';
+                    EN_1K <= '0';
                     EN_1 <= '0';
                     SEL <= '0';
                     T_ready <= '0';
-                    if selector = '0' then -- 128x128
+                    if selector = '0' then
                         Est <= E2;
                     else
                         Est <= E3;               
@@ -59,7 +78,7 @@ begin
                     end if;   
                         
                 when E3 =>
-                    SEL <= '0';                                   
+                    SEL <= '1';                                   
                     if Padding = "00" then
                         Est <= E8;
                     elsif Padding = "01" then
@@ -74,20 +93,20 @@ begin
                     
                 when E5 =>
                     CAP <= '0';
-                    EN_1 <= '1';
+                    EN_1K <= '1';
                     Est <= E6;
                     
                 when E6 =>
-                    x <= x + 1;
-                    if x = kernel_size + 2 then 
+                    if x = kernel_size-1 then
                         Est <= E7;
                     else 
+                        x <= x + 1;
                         Est <= E6;
                     end if;
                     
                 when E7 =>
                     rst <= '1';
-                    EN_1 <= '0';
+                    EN_1K <= '0';
                     x <= 0;
                     Est <= E1;
                                                      
@@ -111,10 +130,10 @@ begin
                     Est <= E11;                    
                              
                 when E11 =>
-                    x <= x + 1;
-                    if x = matriz_size + 4 then 
+                    if x = matriz_size + 1 then 
                         Est <= E12;
                     else 
+                        x <= x + 1;
                         Est <= E11;
                     end if;             
 
@@ -126,7 +145,7 @@ begin
                     
                 when E13 =>
                     y <= y + 1;
-                    if y = 132 then --  Cambiar 
+                    if y = imagen_size then
                         Est <= E14;
                     else 
                         Est <= E8;
@@ -150,7 +169,7 @@ begin
                     
                 when E17 =>
                     y <= y + 1;
-                    if y = to_integer(unsigned(Padding)) then -- Cambiar 
+                    if y = padding_size then 
                         Est <= E18;
                     else 
                         Est <= E15;
@@ -196,7 +215,7 @@ begin
                     
                 when E24 =>
                     y <= y + 1;
-                    if y = 130 then -- Cambiar 
+                    if y = imagen_size then
                         Est <= E25;
                     else 
                         Est <= E19;
@@ -221,7 +240,7 @@ begin
                     
                 when E28 =>
                     y <= y + 1;
-                    if y = to_integer(unsigned(Padding)) then -- Cambiar 
+                    if y = padding_size then
                         Est <= E29;
                     else 
                         Est <= E26;
@@ -235,12 +254,12 @@ begin
                 when others =>
                     rst <= '1';
                     CAP <= '0';
+                    EN_1K <= '0';                    
                     EN_1 <= '0';
                     SEL <= '0';
                     T_ready <= '0';                   
             end case;
         end if;
     end process;
-
 
 end Behavioral;

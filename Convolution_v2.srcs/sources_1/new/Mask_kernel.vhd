@@ -7,7 +7,7 @@ entity Mask_kernel is
         NUM_REGS    : integer := 27
     );
     Port(
-        load          : in std_logic;
+        clk, load     : in std_logic;    
         Tamano_kernel : in std_logic_vector(1 downto 0); 
         Data_in       : in Data_array(0 to NUM_REGS-1);
         Data_out      : out Data_array(0 to NUM_REGS-1)
@@ -21,16 +21,20 @@ architecture Behavioral of Mask_kernel is
 --    Tamaño_kernel <= "00" --kernel 2x2
 
 signal Registros : Data_array(0 to NUM_REGS-1); 
+signal clk_load  : std_logic;
 
 begin
-    process(load)
+
+    clk_load <= clk AND load;
+
+    process(clk_load)
     begin
-        if rising_edge(load) then
+        if rising_edge(clk_load) then
             Registros <= Data_in;
         end if;
     end process;
 
-    process(Tamano_kernel)
+    process(clk_load)
     begin
         case Tamano_kernel is
             -- KERNEL 5X5

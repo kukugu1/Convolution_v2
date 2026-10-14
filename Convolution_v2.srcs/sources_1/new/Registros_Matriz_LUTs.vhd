@@ -17,7 +17,7 @@ entity Registros_Matriz_LUTs is
 end Registros_Matriz_LUTs;
 
 architecture Behavioral of Registros_Matriz_LUTs is
-    constant Profundidad  : natural := Matriz_size - KERNEL_SIZE;
+    constant Profundidad  : natural := Matriz_size - KERNEL_SIZE - 1;
     signal Registros_LUTs : Data_matriz(0 to NUM_ROWS-1)(0 to Profundidad);
     attribute srl_style   : string;
     attribute srl_style of Registros_LUTs : signal is "srl";

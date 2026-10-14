@@ -8,14 +8,13 @@ entity Adder_tree is
         NUM_REGS : integer := 27
     );
     Port (
-        clk, load      : in std_logic; 
+        clk, load      : in std_logic;
         Data_in_kernel : in Data_array(0 to NUM_REGS-1);
         Data_in_matriz : in Data_array(0 to NUM_REGS-1);
         Data_out_5x5   : out Vector_Array(0 to 0)(21 downto 0);
         Data_out_4x4   : out Vector_Array(0 to 0)(21 downto 0);
         Data_out_3x3   : out Vector_Array(0 to 0)(21 downto 0);
         Data_out_2x2   : out Vector_Array(0 to 0)(21 downto 0)
-        --Data_out_1x1   : out Vector_Array(0 to 0)(21 downto 0)    
     );
 end Adder_tree;
 architecture Behavioral of Adder_tree is
@@ -39,15 +38,17 @@ architecture Behavioral of Adder_tree is
     signal k1x1        : Matrix_Array(0 to 3, 0 to 5)(15 downto 0);
     signal corrimiento : Matrix_Array(0 to 1, 0 to 1)(18 downto 0);
     
+    signal clk_load  : std_logic;
+
     begin   
     
-    process(clk)
+    clk_load <= clk AND load;
+            
+    process(clk_load)
     begin
-        if rising_edge(clk) then
-            if load = '1' then
-                Registros_kernel <= Data_in_kernel;
-                Registros_matriz <= Data_in_matriz;
-            end if; 
+        if rising_edge(clk_load) then
+            Registros_kernel <= Data_in_kernel;
+            Registros_matriz <= Data_in_matriz;
                    
         --  Etapa 1 Multiplicación
             for i in 0 to NUM_REGS-1 loop

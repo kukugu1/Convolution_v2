@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_maquinas_De_Control_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_maquinas_De_Control" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="2,000.001 ns"></ZoomEndTime>
+      <Cursor1Time time="2,000.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="209"></NameColumnWidth>
+      <ValueColumnWidth column_width="106"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="9" />
+   <wvobject fp_name="/tb_maquinas_De_Control/clk_0_period" type="other">
+      <obj_property name="ElementShortName">clk_0_period</obj_property>
+      <obj_property name="ObjectShortName">clk_0_period</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_maquinas_De_Control/clk_0" type="logic">
+      <obj_property name="ElementShortName">clk_0</obj_property>
+      <obj_property name="ObjectShortName">clk_0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_maquinas_De_Control/Bus_valid_Size_0" type="array">
+      <obj_property name="ElementShortName">Bus_valid_Size_0[2:0]</obj_property>
+      <obj_property name="ObjectShortName">Bus_valid_Size_0[2:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_maquinas_De_Control/Padding_0" type="array">
+      <obj_property name="ElementShortName">Padding_0[1:0]</obj_property>
+      <obj_property name="ObjectShortName">Padding_0[1:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_maquinas_De_Control/Stride_0" type="array">
+      <obj_property name="ElementShortName">Stride_0[1:0]</obj_property>
+      <obj_property name="ObjectShortName">Stride_0[1:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_maquinas_De_Control/kernel_0" type="array">
+      <obj_property name="ElementShortName">kernel_0[1:0]</obj_property>
+      <obj_property name="ObjectShortName">kernel_0[1:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="group75" type="group">
+      <obj_property name="label">Control_Bus_In</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_maquinas_De_Control/T_valid_0" type="logic">
+         <obj_property name="ElementShortName">T_valid_0</obj_property>
+         <obj_property name="ObjectShortName">T_valid_0</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_maquinas_De_Control/selector_0" type="logic">
+         <obj_property name="ElementShortName">selector_0</obj_property>
+         <obj_property name="ObjectShortName">selector_0</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_maquinas_De_Control/rst_0" type="logic">
+         <obj_property name="ElementShortName">rst_0</obj_property>
+         <obj_property name="ObjectShortName">rst_0</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_maquinas_De_Control/CAP_0" type="logic">
+         <obj_property name="ElementShortName">CAP_0</obj_property>
+         <obj_property name="ObjectShortName">CAP_0</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_maquinas_De_Control/SEL_0" type="logic">
+         <obj_property name="ElementShortName">SEL_0</obj_property>
+         <obj_property name="ObjectShortName">SEL_0</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_maquinas_De_Control/T_ready_1" type="logic">
+         <obj_property name="ElementShortName">T_ready_1</obj_property>
+         <obj_property name="ObjectShortName">T_ready_1</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_maquinas_De_Control/EN_1K_0" type="logic">
+         <obj_property name="ElementShortName">EN_1K_0</obj_property>
+         <obj_property name="ObjectShortName">EN_1K_0</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_maquinas_De_Control/EN_1_0" type="logic">
+         <obj_property name="ElementShortName">EN_1_0</obj_property>
+         <obj_property name="ObjectShortName">EN_1_0</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group79" type="group">
+      <obj_property name="label">Valid_Data</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_maquinas_De_Control/SR_Capture_0" type="logic">
+         <obj_property name="ElementShortName">SR_Capture_0</obj_property>
+         <obj_property name="ObjectShortName">SR_Capture_0</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_maquinas_De_Control/AdderTree_Enable_0" type="logic">
+         <obj_property name="ElementShortName">AdderTree_Enable_0</obj_property>
+         <obj_property name="ObjectShortName">AdderTree_Enable_0</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_maquinas_De_Control/VALID_OUT_0" type="logic">
+         <obj_property name="ElementShortName">VALID_OUT_0</obj_property>
+         <obj_property name="ObjectShortName">VALID_OUT_0</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group80" type="group">
+      <obj_property name="label">Control_Bus_Out</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_maquinas_De_Control/T_ready_0" type="logic">
+         <obj_property name="ElementShortName">T_ready_0</obj_property>
+         <obj_property name="ObjectShortName">T_ready_0</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_maquinas_De_Control/WAIT_0_0" type="logic">
+         <obj_property name="ElementShortName">WAIT_0_0</obj_property>
+         <obj_property name="ObjectShortName">WAIT_0_0</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_maquinas_De_Control/RST_1" type="logic">
+         <obj_property name="ElementShortName">RST_1</obj_property>
+         <obj_property name="ObjectShortName">RST_1</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_maquinas_De_Control/CAP_1" type="logic">
+         <obj_property name="ElementShortName">CAP_1</obj_property>
+         <obj_property name="ObjectShortName">CAP_1</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_maquinas_De_Control/EN_2_0" type="logic">
+         <obj_property name="ElementShortName">EN_2_0</obj_property>
+         <obj_property name="ObjectShortName">EN_2_0</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_maquinas_De_Control/T_valid_1" type="logic">
+         <obj_property name="ElementShortName">T_valid_1</obj_property>
+         <obj_property name="ObjectShortName">T_valid_1</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

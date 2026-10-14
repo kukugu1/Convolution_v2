@@ -2,23 +2,25 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 entity Control_Architecture is
-    Port (
+    Port(
         clk, selector, T_valid_in, T_ready_in : in std_logic;
-        Bus_valid_Size : in std_logic_vector(2 downto 0);
-        Padding, kernel, Stride : in std_logic_vector(1 downto 0);    
-        rst_RPS, CAP_RPS, SEL, T_ready_out : out std_logic;
-        rst_RSP, CAP_RSP, EN_2, T_valid_out : out std_logic;        
-        SR_Capture, EN_1, clk_EN_1 : buffer std_logic;
-        AdderTree_Enable : out std_logic
+        Bus_valid_Size                        : in std_logic_vector(2 downto 0);
+        Padding, kernel, Stride               : in std_logic_vector(1 downto 0);
+        rst_RPS, CAP_RPS, SEL, T_ready_out    : out std_logic;
+        rst_RSP, CAP_RSP, EN_2, T_valid_out   : out std_logic;
+        SR_Capture, EN_1, EN_1K, clk_WAIT_0   : buffer std_logic;
+        AdderTree_Enable                      : out std_logic
     );
 end Control_Architecture;
 
 architecture Behavioral of Control_Architecture is
-signal VALID_OUT, WAIT_0, clk_WAIT_0 : std_logic;
+signal clk_EN_1, VALID_OUT, WAIT_0, not_WAIT_0 : std_logic;
 
 begin
-    clk_WAIT_0 <= clk nand WAIT_0; 
-
+    not_WAIT_0 <= not WAIT_0;
+    clk_WAIT_0 <= clk and not_WAIT_0; 
+    clk_EN_1   <= clk and EN_1;
+        
     CBI : entity work.Control_Bus_in
     generic map(
         kernel_size => 27,
@@ -32,17 +34,16 @@ begin
         Padding => Padding,
         rst => rst_RPS,
         CAP => CAP_RPS,
+        EN_1K => EN_1K,
         EN_1 => EN_1,
         SEL => SEL,
         T_ready => T_ready_out
     );
     
-    clk_EN_1 <= clk and EN_1; 
-    
     VD : entity work.Valid_Data
     generic map(
         DELAY_AdderTree_Enable => 1,
-        DELAY_VALID_OUT => 7
+        DELAY_VALID_OUT => 8
     )
     port map(
         clk => clk_EN_1,
@@ -71,6 +72,4 @@ begin
         WAIT_0 => WAIT_0      
     ); 
     
-      
-
 end Behavioral;

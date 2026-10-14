@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_Convolution_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="constantes_pkg" />
+            <top_module name="tb_Convolution" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="6,106.640 ns"></ZoomStartTime>
+      <ZoomEndTime time="6,225.641 ns"></ZoomEndTime>
+      <Cursor1Time time="45.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="265"></NameColumnWidth>
+      <ValueColumnWidth column_width="81"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="10" />
+   <wvobject fp_name="/tb_Convolution/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="group525" type="group">
+      <obj_property name="label">DATA IN</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_Convolution/Data_in" type="array">
+         <obj_property name="ElementShortName">Data_in[1023:0]</obj_property>
+         <obj_property name="ObjectShortName">Data_in[1023:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/Bias" type="array">
+         <obj_property name="ElementShortName">Bias[7:0]</obj_property>
+         <obj_property name="ObjectShortName">Bias[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/T_valid_in" type="logic">
+         <obj_property name="ElementShortName">T_valid_in</obj_property>
+         <obj_property name="ObjectShortName">T_valid_in</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/T_ready_in" type="logic">
+         <obj_property name="ElementShortName">T_ready_in</obj_property>
+         <obj_property name="ObjectShortName">T_ready_in</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/selector" type="logic">
+         <obj_property name="ElementShortName">selector</obj_property>
+         <obj_property name="ObjectShortName">selector</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/Bus_valid_Size" type="array">
+         <obj_property name="ElementShortName">Bus_valid_Size[2:0]</obj_property>
+         <obj_property name="ObjectShortName">Bus_valid_Size[2:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/Padding" type="array">
+         <obj_property name="ElementShortName">Padding[1:0]</obj_property>
+         <obj_property name="ObjectShortName">Padding[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/kernel" type="array">
+         <obj_property name="ElementShortName">kernel[1:0]</obj_property>
+         <obj_property name="ObjectShortName">kernel[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/Stride" type="array">
+         <obj_property name="ElementShortName">Stride[1:0]</obj_property>
+         <obj_property name="ObjectShortName">Stride[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group526" type="group">
+      <obj_property name="label">CONTROL BUS IN</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_Convolution/uut/CBI/Est" type="other">
+         <obj_property name="ElementShortName">Est</obj_property>
+         <obj_property name="ObjectShortName">Est</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/clk_WAIT" type="logic">
+         <obj_property name="ElementShortName">clk_WAIT</obj_property>
+         <obj_property name="ObjectShortName">clk_WAIT</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/CBI/rst" type="logic">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/CBI/CAP" type="logic">
+         <obj_property name="ElementShortName">CAP</obj_property>
+         <obj_property name="ObjectShortName">CAP</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/CBI/SEL" type="logic">
+         <obj_property name="ElementShortName">SEL</obj_property>
+         <obj_property name="ObjectShortName">SEL</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/CBI/EN_1K" type="logic">
+         <obj_property name="ElementShortName">EN_1K</obj_property>
+         <obj_property name="ObjectShortName">EN_1K</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/CBI/EN_1" type="logic">
+         <obj_property name="ElementShortName">EN_1</obj_property>
+         <obj_property name="ObjectShortName">EN_1</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/CBI/x" type="other">
+         <obj_property name="ElementShortName">x</obj_property>
+         <obj_property name="ObjectShortName">x</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/CBI/y" type="other">
+         <obj_property name="ElementShortName">y</obj_property>
+         <obj_property name="ObjectShortName">y</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/T_ready_out" type="logic">
+         <obj_property name="ElementShortName">T_ready_out</obj_property>
+         <obj_property name="ObjectShortName">T_ready_out</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group560" type="group">
+      <obj_property name="label">REGISTRO PARALELO SERIE</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_Convolution/uut/Parallel_Serial_Register/Data_out" type="array">
+         <obj_property name="ElementShortName">Data_out[7:0]</obj_property>
+         <obj_property name="ObjectShortName">Data_out[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/Parallel_Serial_Register/Registro_corrimiento" type="array">
+         <obj_property name="ElementShortName">Registro_corrimiento[1055:0]</obj_property>
+         <obj_property name="ObjectShortName">Registro_corrimiento[1055:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFD700</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group536" type="group">
+      <obj_property name="label">VALID DATA</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_Convolution/uut/VD/Est" type="other">
+         <obj_property name="ElementShortName">Est</obj_property>
+         <obj_property name="ObjectShortName">Est</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/VD/SR_Capture" type="logic">
+         <obj_property name="ElementShortName">SR_Capture</obj_property>
+         <obj_property name="ObjectShortName">SR_Capture</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/VD/AdderTree_Enable" type="logic">
+         <obj_property name="ElementShortName">AdderTree_Enable</obj_property>
+         <obj_property name="ObjectShortName">AdderTree_Enable</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/VD/VALID_OUT" type="logic">
+         <obj_property name="ElementShortName">VALID_OUT</obj_property>
+         <obj_property name="ObjectShortName">VALID_OUT</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/VD/x" type="other">
+         <obj_property name="ElementShortName">x</obj_property>
+         <obj_property name="ObjectShortName">x</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/VD/y" type="other">
+         <obj_property name="ElementShortName">y</obj_property>
+         <obj_property name="ObjectShortName">y</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/VD/c" type="other">
+         <obj_property name="ElementShortName">c</obj_property>
+         <obj_property name="ObjectShortName">c</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group563" type="group">
+      <obj_property name="label">REGISTROS Y MASCARAS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="group565" type="group">
+         <obj_property name="label">KERNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_Convolution/uut/Kernel_Registers/Data_out" type="array">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">Data_out[0:26][7:0]</obj_property>
+            <obj_property name="ObjectShortName">Data_out[0:26][7:0]</obj_property>
+            <obj_property name="label">Salida_Registros[0:26][7:0]</obj_property>
+            <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Convolution/uut/Kernel_Mask/Data_out" type="array">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">Data_out[0:26][7:0]</obj_property>
+            <obj_property name="ObjectShortName">Data_out[0:26][7:0]</obj_property>
+            <obj_property name="label">Salida_Mascara[0:26][7:0]</obj_property>
+            <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group567" type="group">
+         <obj_property name="label">MATRIZ</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_Convolution/uut/Matrix_Registers/Data_out" type="array">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">Data_out[0:24][7:0]</obj_property>
+            <obj_property name="ObjectShortName">Data_out[0:24][7:0]</obj_property>
+            <obj_property name="label">Salida_Registros[0:24][7:0]</obj_property>
+            <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Convolution/uut/Matrix_Mask/Data_out" type="array">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">Data_out[0:26][7:0]</obj_property>
+            <obj_property name="ObjectShortName">Data_out[0:26][7:0]</obj_property>
+            <obj_property name="label">Salida_Mascara[0:26][7:0]</obj_property>
+            <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group570" type="group">
+      <obj_property name="label">ADDER TREE y BaR</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_Convolution/uut/AdderTree/Registros_kernel" type="array">
+         <obj_property name="ElementShortName">Registros_kernel[0:26][7:0]</obj_property>
+         <obj_property name="ObjectShortName">Registros_kernel[0:26][7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/AdderTree/Registros_matriz" type="array">
+         <obj_property name="ElementShortName">Registros_matriz[0:26][7:0]</obj_property>
+         <obj_property name="ObjectShortName">Registros_matriz[0:26][7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/AdderTree/P" type="array">
+         <obj_property name="ElementShortName">P[0:26][15:0]</obj_property>
+         <obj_property name="ObjectShortName">P[0:26][15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/AdderTree/Data_out_5x5" type="array">
+         <obj_property name="ElementShortName">Data_out_5x5[0:0][21:0]</obj_property>
+         <obj_property name="ObjectShortName">Data_out_5x5[0:0][21:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/Adder_Tree_Mask/Data_out" type="array">
+         <obj_property name="ElementShortName">Data_out[21:0]</obj_property>
+         <obj_property name="ObjectShortName">Data_out[21:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/BaR/Bias" type="array">
+         <obj_property name="ElementShortName">Bias[7:0]</obj_property>
+         <obj_property name="ObjectShortName">Bias[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/BaR/Sum_result" type="array">
+         <obj_property name="ElementShortName">Sum_result[21:0]</obj_property>
+         <obj_property name="ObjectShortName">Sum_result[21:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/BaR/Data_out" type="array">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">Data_out[7:0]</obj_property>
+         <obj_property name="ObjectShortName">Data_out[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="label">Data_out_BaR[7:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group553" type="group">
+      <obj_property name="label">CONTROL BUS OUT</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_Convolution/uut/CBO/Est" type="other">
+         <obj_property name="ElementShortName">Est</obj_property>
+         <obj_property name="ObjectShortName">Est</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/CBO/WAIT_0" type="logic">
+         <obj_property name="ElementShortName">WAIT_0</obj_property>
+         <obj_property name="ObjectShortName">WAIT_0</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/CBO/RST" type="logic">
+         <obj_property name="ElementShortName">RST</obj_property>
+         <obj_property name="ObjectShortName">RST</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/CBO/CAP" type="logic">
+         <obj_property name="ElementShortName">CAP</obj_property>
+         <obj_property name="ObjectShortName">CAP</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/CBO/EN_2" type="logic">
+         <obj_property name="ElementShortName">EN_2</obj_property>
+         <obj_property name="ObjectShortName">EN_2</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/T_valid_out" type="logic">
+         <obj_property name="ElementShortName">T_valid_out</obj_property>
+         <obj_property name="ObjectShortName">T_valid_out</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/CBO/x" type="other">
+         <obj_property name="ElementShortName">x</obj_property>
+         <obj_property name="ObjectShortName">x</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/tb_Convolution/data_out" type="array">
+      <obj_property name="ElementShortName">data_out[1023:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out[1023:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_Convolution/uut/Serial_Parallel_Register/data_in" type="array">
+      <obj_property name="ElementShortName">data_in[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in[7:0]</obj_property>
+   </wvobject>
+</wave_config>

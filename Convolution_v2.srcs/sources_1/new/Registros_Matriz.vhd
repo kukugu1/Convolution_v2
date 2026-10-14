@@ -24,15 +24,16 @@ signal Nodos      : Data_array(0 to 3);
 signal Adder_tree : Data_array(0 to (ROW_LENGTH*NUM_ROWS)-1);
 
 begin
+
     RegistrosFFD : entity work.Registros_Matriz_FFD
     generic map(
         ROW_LENGTH => ROW_LENGTH,
-        NUM_ROWS => NUM_ROWS
+        NUM_ROWS   => NUM_ROWS
     )        
     port map(
-        clk => clk,
-        rst => rst,
-        enable => enable,
+        clk        => clk,
+        rst        => rst,
+        enable     => enable,
         Data_in(4) => Data_in,
         Data_in(3) => Nodos(3),
         Data_in(2) => Nodos(2),
@@ -44,16 +45,16 @@ begin
     RegistrosLUTs : entity work.Registros_Matriz_LUTs
     generic map(
         Matriz_size => Matriz_size,
-        NUM_ROWS => 4,
+        NUM_ROWS    => 4,
         KERNEL_SIZE => KERNEL_SIZE
     )
     port map(
-        clk => clk,
-        enable => enable,        
-        Data_in(3) => Adder_tree(4),
-        Data_in(2) => Adder_tree(9),
-        Data_in(1) => Adder_tree(14),
-        Data_in(0) => Adder_tree(19),
+        clk         => clk,
+        enable      => enable,        
+        Data_in(3)  => Adder_tree(4),
+        Data_in(2)  => Adder_tree(9),
+        Data_in(1)  => Adder_tree(14),
+        Data_in(0)  => Adder_tree(19),
         Data_out(3) => Nodos(3),       
         Data_out(2) => Nodos(2),
         Data_out(1) => Nodos(1),

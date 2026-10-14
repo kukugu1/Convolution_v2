@@ -20,6 +20,6 @@ architecture Behavioral of Bias_and_reduction is
 begin
 
     Sum_result <= std_logic_vector(signed(Data_in) + signed(Bias));
-    Data_out <= Sum_result(Data_in_length-1 downto Data_in_length-8);
+    Data_out   <= Sum_result(Data_in_length-1 downto Data_in_length-8);
 
 end Behavioral;

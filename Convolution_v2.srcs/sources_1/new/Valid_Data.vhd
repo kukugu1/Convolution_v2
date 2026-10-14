@@ -4,20 +4,20 @@ use IEEE.numeric_std.ALL;
 
 entity Valid_Data is
     generic(
-        DELAY_AdderTree_Enable : integer := 1;   
-        DELAY_VALID_OUT        : integer := 7     
+        DELAY_AdderTree_Enable : integer := 1;
+        DELAY_VALID_OUT        : integer := 7
     );
     Port (
-        clk                          : in std_logic;
-        Bus_valid_Size               : in std_logic_vector(2 downto 0);
-        kernel, Stride, Padding      : in std_logic_vector(1 downto 0);
-        SR_Capture                   : buffer std_logic;
-        AdderTree_Enable, VALID_OUT  : out std_logic
+        clk                         : in std_logic;
+        Bus_valid_Size              : in std_logic_vector(2 downto 0);
+        kernel, Stride, Padding     : in std_logic_vector(1 downto 0);
+        SR_Capture                  : buffer std_logic;
+        AdderTree_Enable, VALID_OUT : out std_logic
     );
 end Valid_Data;
 
 architecture Behavioral of Valid_Data is
-signal imagen_size, kernel_size, signal_mixer : integer;
+signal imagen_size, kernel_size, padding_size, signal_mixer : integer;
 type sr_array is array (0 to DELAY_VALID_OUT-1) of std_logic;
 signal sr : sr_array;
 type estados is(ini,E1,E2,E3,E4,E5,E6,E7,E8,E9,
@@ -46,14 +46,17 @@ signal x, y, c : integer := 0;
 --     Stride <= "11" -- Stride de 3
 
 begin
-    imagen_size <= 8 when Bus_valid_Size = "000" else 16 when Bus_valid_Size = "001" else
-                   32 when Bus_valid_Size = "010" else 64 when Bus_valid_Size = "011" else
-                   128 when Bus_valid_Size = "100" else 0;
+    imagen_size  <= 8 when Bus_valid_Size = "000" else 16 when Bus_valid_Size = "001" else
+                    32 when Bus_valid_Size = "010" else 64 when Bus_valid_Size = "011" else
+                    128 when Bus_valid_Size = "100" else 0;
                    
-    kernel_size <= 2 when kernel = "00" else 3 when kernel = "01" else 
-                   4 when kernel = "10" else 5 when kernel = "11";
+    kernel_size  <= 2 when kernel = "00" else 3 when kernel = "01" else 
+                    4 when kernel = "10" else 5 when kernel = "11";
+                   
+    padding_size <= 0 when kernel = "00" else 1 when kernel = "01" else 
+                    2 when kernel = "10" else 0;               
     
-    signal_mixer <= imagen_size + kernel_size;
+    signal_mixer <= imagen_size + padding_size;
     
     process(clk)
     begin
@@ -63,11 +66,11 @@ begin
                 sr(i) <= sr(i-1);
             end loop;
         end if;
-    end process;    
+    end process;
     
     process(clk)
     begin
-        if falling_edge(clk) then
+        if rising_edge(clk) then
             case Est is
                 when ini =>
                     SR_Capture <= '0';
@@ -77,16 +80,16 @@ begin
                     elsif Stride = "10" then
                         Est <= E8;
                     elsif Stride = "11" then
-                        Est <= E16; 
+                        Est <= E16;
                     else
-                        Est <= E1;                              
+                        Est <= ini;             
                     end if;
                     
                 when E1 =>
-                    x <= x + 1;
-                    if x = 531 then
+                    if x = 132*4+4 then
                         Est <= E2;
                     else
+                        x <= x + 1;
                         Est <= E1;    
                     end if;
                     
@@ -109,7 +112,7 @@ begin
                 when E4 =>
                     SR_Capture <= '0';
                     x <= 0;
-                    if c = 131 then
+                    if c = 132-1 then
                         Est <= E5;
                     else
                         Est <= E4;
@@ -118,7 +121,7 @@ begin
                 when E5 =>
                     SR_Capture <= '0';
                     x <= x + 1;
-                    if x = 2 then
+                    if x = 5-3 then
                         Est <= E6;
                     else
                         Est <= E5;
@@ -143,7 +146,7 @@ begin
                 when E8 =>
                     SR_Capture <= '0';
                     x <= x + 1;
-                    if x= 530 then
+                    if x= 132*4 + 2 then
                         Est <= E9;
                     else
                         Est <= E8;
@@ -172,7 +175,7 @@ begin
                 when E12 =>
                     SR_Capture <= '0';
                     x <= 0;  
-                    if c = 131 then
+                    if c = 132-1 then
                         Est <= E13;
                     else
                         Est <= E12;
@@ -181,7 +184,7 @@ begin
                 when E13 =>
                     SR_Capture <= '1';
                     x <= x + 1;  
-                    if x = 133 then
+                    if x = 5-4+132 then
                         Est <= E14;
                     else
                         Est <= E13;
@@ -206,7 +209,7 @@ begin
                 when E16 =>
                     SR_Capture <= '1';
                     x <= x + 1;  
-                    if x = 133 then
+                    if x = 132*4+2 then
                         Est <= E17; 
                     else
                         Est <= E16;
@@ -240,7 +243,7 @@ begin
                 when E21 =>
                     SR_Capture <= '0';
                     x <= 0;  
-                    if c = 131 then
+                    if c = 132-1 then
                         Est <= E22; 
                     else
                         Est <= E21;
@@ -278,6 +281,6 @@ begin
     end process;      
     
     AdderTree_Enable <= sr(DELAY_AdderTree_Enable-1);
-    VALID_OUT <= sr(DELAY_VALID_OUT-1);             
+    VALID_OUT <= sr(DELAY_VALID_OUT-1);
 
 end Behavioral;

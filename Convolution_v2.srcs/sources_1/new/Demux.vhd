@@ -26,6 +26,9 @@ begin
             when '0' => 
                 salida_1 <= (others => '0');                     
                 salida_0 <= entrada;
+            when others =>
+                salida_1 <= (others => '0'); 
+                salida_0 <= (others => '0');     
         end case;
     end process;
 end Behavioral;
