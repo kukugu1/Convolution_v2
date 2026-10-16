@@ -1,0 +1,17 @@
+TODOS LOS COMANDOS DEBEN EJECUTARSE EN LA DIRECCIÓN DE LA CARPETA DEL REPOSITORIO, EN ESTE CASO:
+CASA -> D:\VivadoProjects\Convolution_v2
+
+Comando para recibir los cambios hechos en el repositorio:
+git pull
+
+Comando para ver los cambios hechos en el repositorio:
+git status
+
+Comando para preparar los cambios que hizo el usuario de forma LOCAL:
+git add .
+
+Comando para añadir un comentario de los cambios realizados:
+git commit -m "Agregado el archivo testbench para el módulo UART"
+
+Comando para subir dichos cambios al repositorio de GitHub:
+git push
