@@ -69,7 +69,7 @@ begin
         Bias           <= x"01"; -- 0000 0001 
         Bus_valid_Size <= "100"; --128x128
         Padding        <= "00"; -- Padding de cero
-        kernel         <= "11"; -- kernel de 5x5
+        kernel         <= "10"; -- kernel de 4x4
         Stride         <= "01"; -- Stride de 1        
         
         --Se llena el kernel
@@ -111,7 +111,7 @@ begin
         --5ta fila matriz
         wait for 140*clk_period;
         T_valid_in <= '1';
-        --T_ready_in <= '1';
+        T_ready_in <= '1';
 
         wait for 2*clk_period;
         T_valid_in <= '0';          

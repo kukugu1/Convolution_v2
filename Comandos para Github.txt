@@ -1,5 +1,6 @@
 TODOS LOS COMANDOS DEBEN EJECUTARSE EN LA DIRECCIÓN DE LA CARPETA DEL REPOSITORIO, EN ESTE CASO:
 CASA -> D:\VivadoProjects\Convolution_v2
+COMPU IZQUIERDA -> .\Documents\Convolucion\ProyectosVivado\Convolution_v2\
 
 Comando para recibir los cambios hechos en el repositorio:
 git pull
