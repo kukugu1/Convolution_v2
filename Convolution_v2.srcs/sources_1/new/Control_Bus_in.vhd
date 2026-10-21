@@ -81,8 +81,10 @@ begin
                     SEL <= '1';                                   
                     if Padding = "00" then
                         Est <= E8;
-                    elsif Padding = "01" then
+                    elsif Padding = "01" OR Padding = "10" then
                         Est <= E15;
+                    else
+                        Est <= ini;
                     end if;
                     
                 when E4 =>
@@ -135,7 +137,7 @@ begin
                     else 
                         x <= x + 1;
                         Est <= E11;
-                    end if;             
+                    end if;
 
                 when E12 =>
                     rst <= '1';
@@ -144,10 +146,10 @@ begin
                     Est <= E13;
                     
                 when E13 =>
-                    y <= y + 1;
-                    if y = imagen_size then
+                    if y = imagen_size - 1 then
                         Est <= E14;
                     else 
+                        y <= y + 1;
                         Est <= E8;
                     end if;       
                     
@@ -160,15 +162,17 @@ begin
                     Est <= E16;  
                     
                 when E16 =>
-                    x <= x + 1;
-                    if x = matriz_size + 2 then 
+                    if x = matriz_size + 1 then 
+                        y <= y + 1;
                         Est <= E17;
                     else 
-                        Est <= E15;
+                        x <= x + 1;
+                        Est <= E16;
                     end if;  
                     
                 when E17 =>
-                    y <= y + 1;
+                    EN_1 <= '0';
+                    x <= 0;
                     if y = padding_size then 
                         Est <= E18;
                     else 
@@ -201,23 +205,24 @@ begin
                     Est <= E22; 
 
                 when E22 =>
-                    x <= x + 1;
-                    if x = matriz_size + 4 then 
+                    if x = matriz_size + 1 then 
                         Est <= E23;
                     else 
+                        x <= x + 1;
                         Est <= E22;
                     end if;
                     
                 when E23 =>
-                    rst <= '1';                    
+                    rst <= '1';   
+                    x <= 0;                 
                     EN_1 <= '0';
                     Est <= E24; 
                     
                 when E24 =>
-                    y <= y + 1;
-                    if y = imagen_size then
+                    if y = imagen_size - 1 then
                         Est <= E25;
                     else 
+                        y <= y + 1;
                         Est <= E19;
                     end if;                                         
 
@@ -232,14 +237,17 @@ begin
                     
                 when E27 =>
                     x <= x + 1;
-                    if x = matriz_size + 4 then 
+                    if x = matriz_size + 1 then 
+                        y <= y + 1;
                         Est <= E28;
                     else 
-                        Est <= E26;
+                        x <= x + 1;
+                        Est <= E27;
                     end if;
                     
                 when E28 =>
-                    y <= y + 1;
+                    x <= 0;
+                    EN_1 <= '0';
                     if y = padding_size then
                         Est <= E29;
                     else 

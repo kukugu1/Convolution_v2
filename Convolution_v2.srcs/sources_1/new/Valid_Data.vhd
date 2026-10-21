@@ -55,8 +55,8 @@ begin
     kernel_size  <= 2 when kernel = "00" else 3 when kernel = "01" else 
                     4 when kernel = "10" else 5 when kernel = "11";
                    
-    padding_size <= 0 when kernel = "00" else 1 when kernel = "01" else 
-                    2 when kernel = "10" else 0;               
+    padding_size <= 0 when Padding = "00" else 1 when Padding = "01" else
+                    2 when Padding = "10" else 0;
     
     signal_mixer <= imagen_size + padding_size;
     
@@ -78,81 +78,114 @@ begin
                     SR_Capture <= '0';
                     x <= x + 1;
                     if Stride = "01" then
+                        SR_Capture <= '0';
+                        x <= x + 1;
                         Est <= E1;
                     elsif Stride = "10" then
                         Est <= E8;
                     elsif Stride = "11" then
                         Est <= E16;
                     else
-                        Est <= ini;             
+                        Est <= ini;
                     end if;
                     
                 when E1 =>
-                    if x = 132*4+4 then
-                        Est <= E2;
+                    if Padding = "00" then
+                        if x = 132*4+6 then
+                            SR_Capture <= '0';
+                            x <= 0;
+                            c <= 0;
+                            Est <= E2;
+                        else
+                            SR_Capture <= '0';
+                            x <= x + 1;
+                            Est <= E1;    
+                        end if;
+                    elsif Padding = "01" then
+                        if x = 132*4+5 then
+                            SR_Capture <= '0';
+                            x <= 0;
+                            c <= 0;
+                            Est <= E2;
+                        else
+                            SR_Capture <= '0';
+                            x <= x + 1;                        
+                            Est <= E1;
+                        end if;
+                    elsif Padding = "10" then
+                        if x = 132*4+4 then
+                            SR_Capture <= '0';
+                            x <= 0;
+                            c <= 0;
+                            Est <= E2;
+                        else
+                            SR_Capture <= '0';
+                            x <= x + 1;                        
+                            Est <= E1;
+                        end if;
                     else
-                        x <= x + 1;
-                        Est <= E1;    
+                        Est <= ini;
                     end if;
                     
                 when E2 =>
                     SR_Capture <= '1';
-                    x <= 0;
-                    c <= 0;
+                    x <= x + 1;
+                    c <= c + 1;
                     Est <= E3;
                                         
                 when E3 =>
-                    SR_Capture <= '1';
-                    x <= x + 1;
-                    c <= c + 1;
-                    if x = signal_mixer - 5 then
+                    if x = signal_mixer - 5 + (1 * padding_size) then
+                        SR_Capture <= '0';
+                        x <= 0;
+                        c <= c + 1;
                         Est <= E4;
                     else
-                        Est <= E3;    
+                        SR_Capture <= '1';
+                        x <= x + 1;
+                        c <= c + 1;
+                        Est <= E3;
                     end if;
                                     
                 when E4 =>
-                    SR_Capture <= '0';
-                    x <= 0;
                     if c = 132-1 then
-                        Est <= E5;
-                    else
-                        Est <= E4;
-                    end if; 
-                                       
-                when E5 =>
-                    SR_Capture <= '0';
-                    x <= x + 1;
-                    if x = 5-3 then
+                        SR_Capture <= '0';
+                        c <= 0;
+                        y <= y + 1;
                         Est <= E6;
                     else
-                        Est <= E5;
-                    end if;   
+                        SR_Capture <= '0';
+                        x <= 0;
+                        c <= c + 1;
+                        Est <= E4;
+                    end if;
                                      
-                when E6 =>
-                    SR_Capture <= '0';
-                    x <= 0;
-                    y <= y + 1;
+                when E6 =>     
                     if y = signal_mixer - 2*kernel_size + 7 then
+                        SR_Capture <= '0';
+                        x <= 0;
+                        c <= 0;
+                        y <= 0;
                         Est <= E7;
                     else
+                        SR_Capture <= '1';
+                        x <= x + 1;
+                        c <= c + 1;
                         Est <= E3;
                     end if; 
                                        
                 when E7 =>
                     SR_Capture <= '0';
-                    x <= 0;
-                    y <= 0;
+                    x <= x + 1;
                     Est <= ini;
                                         
                 when E8 =>
                     SR_Capture <= '0';
                     x <= x + 1;
-                    if x= 132*4 + 2 then
+                    if x = 132 * 4 + 2 then
                         Est <= E9;
                     else
                         Est <= E8;
-                    end if;  
+                    end if;
                                       
                 when E9 =>
                     SR_Capture <= '0';

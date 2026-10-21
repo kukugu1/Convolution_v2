@@ -69,7 +69,7 @@ begin
         Bias           <= x"01"; -- 0000 0001 
         Bus_valid_Size <= "100"; --128x128
         Padding        <= "00"; -- Padding de cero
-        kernel         <= "10"; -- kernel de 4x4
+        kernel         <= "11"; -- kernel de 4x4
         Stride         <= "01"; -- Stride de 1        
         
         --Se llena el kernel

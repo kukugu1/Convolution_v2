@@ -47,7 +47,7 @@ begin
         Salida_Mask_Adder_Tree => Salida_Mask_Adder_Tree
     );
 
-    clk_process :process
+    clk_process : process
     begin
         clk <= '0';
         wait for clk_period/2;
@@ -57,14 +57,19 @@ begin
 
     stim_proc: process
     begin
-        -- Inserta tus estímulos a partir de aquí
+        -- De cinco a 1
+--        for i in 0 to 127 loop
+--            Data_in((1023 - (i*8)) downto (1016 - (i*8))) <= std_logic_vector(to_unsigned((i mod 5) + 1, 8));
+--        end loop;
+
+        -- De 1 a 128
         for i in 0 to 127 loop
-            Data_in( (1023 - (i*8)) downto (1016 - (i*8)) ) <= std_logic_vector(to_unsigned((i mod 5) + 1, 8));
+            Data_in((1023 - (i*8)) downto (1016 - (i*8))) <= std_logic_vector(to_unsigned(i + 1, 8));
         end loop;
         Bus_valid_Size <= "100"; --128x128
         Padding <= "00"; -- Padding de cero
         kernel <= "11"; -- kernel de 5x5
-        Stride <= "01"; -- Stride de 1        
+        Stride <= "01"; -- Stride de 1
         
         --Se llena el kernel
         wait for 3*clk_period;
@@ -74,47 +79,23 @@ begin
         T_valid_in <= '0';
         selector <= '1';
         
-        --1era fila matriz
+        -- 1era fila matriz (comportamiento inicial)
         wait for 34*clk_period;
         T_valid_in <= '1';
-        
         wait for 2*clk_period;
         T_valid_in <= '0';
+        selector <= '0';
         
-        --2da fila matriz
-        wait for 140*clk_period;
-        T_valid_in <= '1';
-
-        wait for 2*clk_period;
-        T_valid_in <= '0';
-        
-        --3era fila matriz
-        wait for 140*clk_period;
-        T_valid_in <= '1';
-
-        wait for 2*clk_period;
-        T_valid_in <= '0';       
-        
-        --4ta fila matriz
-        wait for 140*clk_period;
-        T_valid_in <= '1';
-
-        wait for 2*clk_period;
-        T_valid_in <= '0';         
-        
-        --5ta fila matriz
-        wait for 140*clk_period;
-        T_valid_in <= '1';
-
-        wait for 2*clk_period;
-        T_valid_in <= '0';          
-        
-        --6ta fila matriz. Si solo se llenan cinco no arranca la matriz
-        wait for 140*clk_period;
-        T_valid_in <= '1';
-
-        wait for 2*clk_period;
-        T_valid_in <= '0';         
+        -- Filas 2 a 130 (comportamiento repetitivo)
+        for i in 2 to 136 loop
+            selector <= '0';   
+            wait for 140*clk_period;
+            T_valid_in <= '1';
+            
+            wait for 2*clk_period;
+            T_valid_in <= '0';
+        end loop; 
+       
         wait;
     end process;
 

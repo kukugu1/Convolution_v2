@@ -54,7 +54,9 @@ begin
     
     Parallel_Serial_Register : entity work.Registro_paralelo_serie
     generic map(
-        Data_length => Data_length
+        Data_length => Data_length,
+        Pad_words   => 2,
+        Pad_value   => '0'
     )
     port map(
         clk      => clk,

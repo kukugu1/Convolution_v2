@@ -76,40 +76,21 @@ begin
         T_valid_in <= '0';
         selector <= '1';
         
-        --1era fila matriz
+        -- 1era fila matriz (comportamiento inicial)
         wait for 34*clk_period;
         T_valid_in <= '1';
-        
         wait for 2*clk_period;
         T_valid_in <= '0';
         
-        --2da fila matriz
-        wait for 140*clk_period;
-        T_valid_in <= '1';
-
-        wait for 2*clk_period;
-        T_valid_in <= '0';
-        
-        --3era fila matriz
-        wait for 140*clk_period;
-        T_valid_in <= '1';
-
-        wait for 2*clk_period;
-        T_valid_in <= '0';       
-        
-        --4ta fila matriz
-        wait for 140*clk_period;
-        T_valid_in <= '1';
-
-        wait for 2*clk_period;
-        T_valid_in <= '0';         
-        
-        --5ta fila matriz
-        wait for 140*clk_period;
-        T_valid_in <= '1';
-
-        wait for 2*clk_period;
-        T_valid_in <= '0';          
+        -- Filas 2 a 130 (comportamiento repetitivo)
+        for i in 2 to 132 loop
+            selector <= '0';   
+            wait for 140*clk_period;
+            T_valid_in <= '1';
+            
+            wait for 2*clk_period;
+            T_valid_in <= '0';
+        end loop;
         
         wait;
     end process;
