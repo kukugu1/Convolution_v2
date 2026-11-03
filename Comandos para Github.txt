@@ -16,3 +16,6 @@ git commit -m "Agregado el archivo testbench para el módulo UART"
 
 Comando para subir dichos cambios al repositorio de GitHub:
 git push
+
+Comando para subir dichos cambios al repositorio secundario de GitHub:
+git push secundario main

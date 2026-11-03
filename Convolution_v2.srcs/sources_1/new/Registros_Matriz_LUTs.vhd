@@ -4,7 +4,7 @@ use work.constantes_pkg.all;
 
 entity Registros_Matriz_LUTs is
     generic(
-        Matriz_size : natural := 132;
+        Matriz_size : natural := 135;
         NUM_ROWS    : integer := 4;   -- número de filas de la matriz
         KERNEL_SIZE : natural := 5    -- tamaño del kernel; define el offset de profundidad (antes hardcodeado como "5")
     );

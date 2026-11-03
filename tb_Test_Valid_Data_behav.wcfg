@@ -11,12 +11,12 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="7,314.965 ns"></ZoomStartTime>
-      <ZoomEndTime time="7,531.008 ns"></ZoomEndTime>
-      <Cursor1Time time="7,395.000 ns"></Cursor1Time>
+      <ZoomStartTime time="182,012.687 ns"></ZoomStartTime>
+      <ZoomEndTime time="182,139.188 ns"></ZoomEndTime>
+      <Cursor1Time time="182,102.587 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="209"></NameColumnWidth>
+      <NameColumnWidth column_width="199"></NameColumnWidth>
       <ValueColumnWidth column_width="72"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="8" />
@@ -77,21 +77,22 @@
    <wvobject fp_name="group23" type="group">
       <obj_property name="label">CONTROL BUS IN</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_Test_Valid_Data/uut/CBI/Est" type="other">
          <obj_property name="ElementShortName">Est</obj_property>
          <obj_property name="ObjectShortName">Est</obj_property>
          <obj_property name="CustomSignalColor">#00FFFF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_Test_Valid_Data/uut/CBI/EN_1" type="logic">
-         <obj_property name="ElementShortName">EN_1</obj_property>
-         <obj_property name="ObjectShortName">EN_1</obj_property>
-         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-      </wvobject>
       <wvobject fp_name="/tb_Test_Valid_Data/uut/CBI/EN_1K" type="logic">
          <obj_property name="ElementShortName">EN_1K</obj_property>
          <obj_property name="ObjectShortName">EN_1K</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Test_Valid_Data/uut/CBI/EN_1M" type="logic">
+         <obj_property name="ElementShortName">EN_1M</obj_property>
+         <obj_property name="ObjectShortName">EN_1M</obj_property>
          <obj_property name="CustomSignalColor">#00FFFF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
@@ -130,17 +131,27 @@
          <obj_property name="CustomSignalColor">#FF0000</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_Test_Valid_Data/uut/VD/AdderTree_Enable" type="logic">
-         <obj_property name="ElementShortName">AdderTree_Enable</obj_property>
-         <obj_property name="ObjectShortName">AdderTree_Enable</obj_property>
-         <obj_property name="CustomSignalColor">#FF0000</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_Test_Valid_Data/VALID_OUT" type="logic">
-         <obj_property name="ElementShortName">VALID_OUT</obj_property>
-         <obj_property name="ObjectShortName">VALID_OUT</obj_property>
-         <obj_property name="CustomSignalColor">#FF0000</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
+      <wvobject fp_name="group314" type="group">
+         <obj_property name="label">CAPTURA DE DATOS</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/tb_Test_Valid_Data/uut/VD/SR_Capture" type="logic">
+            <obj_property name="ElementShortName">SR_Capture</obj_property>
+            <obj_property name="ObjectShortName">SR_Capture</obj_property>
+            <obj_property name="CustomSignalColor">#FF0000</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Test_Valid_Data/uut/VD/AdderTree_Enable" type="logic">
+            <obj_property name="ElementShortName">AdderTree_Enable</obj_property>
+            <obj_property name="ObjectShortName">AdderTree_Enable</obj_property>
+            <obj_property name="CustomSignalColor">#FF0000</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_Test_Valid_Data/VALID_OUT" type="logic">
+            <obj_property name="ElementShortName">VALID_OUT</obj_property>
+            <obj_property name="ObjectShortName">VALID_OUT</obj_property>
+            <obj_property name="CustomSignalColor">#FF0000</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
       </wvobject>
       <wvobject fp_name="/tb_Test_Valid_Data/uut/VD/x" type="other">
          <obj_property name="ElementShortName">x</obj_property>

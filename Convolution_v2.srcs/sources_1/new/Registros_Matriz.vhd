@@ -4,31 +4,31 @@ use work.constantes_pkg.all;
 
 entity Registros_Matriz is
     generic(
-        Data_length : integer := 8;    
-        Matriz_size : natural := 132;
-        ROW_LENGTH  : integer := 5;   -- registros por fila (y también número de elementos de Data_in)
-        NUM_ROWS    : integer := 5;   -- número de filas de la matriz    
-        KERNEL_SIZE : natural := 5
+        Data_length    : integer := 8;    
+        Matriz_size    : natural := 135;
+        ROW_LENGTH_FFD : integer := 5;   -- registros por fila (y también número de elementos de Data_in)
+        NUM_ROWS_FFD   : integer := 5;   -- número de filas de la matriz    
+        KERNEL_SIZE    : natural := 5
     );
     Port ( 
         clk      : in std_logic;    
         rst      : in std_logic;                              -- reset síncrono, activo en alto
         enable   : in std_logic;                              -- habilita el desplazamiento del banco    
         Data_in  : in std_logic_vector(Data_length-1 downto 0);
-        Data_out : out Data_array(0 to (ROW_LENGTH*NUM_ROWS)-1)
+        Data_out : out Data_array(0 to (ROW_LENGTH_FFD*NUM_ROWS_FFD)-1)
     );
 end Registros_Matriz;
 
 architecture Behavioral of Registros_Matriz is
 signal Nodos      : Data_array(0 to 3);
-signal Adder_tree : Data_array(0 to (ROW_LENGTH*NUM_ROWS)-1);
+signal Adder_tree : Data_array(0 to (ROW_LENGTH_FFD*NUM_ROWS_FFD)-1);
 
 begin
 
     RegistrosFFD : entity work.Registros_Matriz_FFD
     generic map(
-        ROW_LENGTH => ROW_LENGTH,
-        NUM_ROWS   => NUM_ROWS
+        ROW_LENGTH => ROW_LENGTH_FFD,
+        NUM_ROWS   => NUM_ROWS_FFD
     )        
     port map(
         clk        => clk,

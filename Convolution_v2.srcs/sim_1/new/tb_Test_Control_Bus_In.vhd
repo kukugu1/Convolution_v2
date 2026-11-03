@@ -17,6 +17,7 @@ architecture behavior of tb_Test_Control_Bus_In is
     signal selector       : std_logic := '0';
     signal T_valid_in     : std_logic := '0';
     signal Bus_valid_Size : std_logic_vector(2 downto 0) := (others => '0');
+    signal kernel         : std_logic_vector(1 downto 0) := (others => '0');
     signal Padding        : std_logic_vector(1 downto 0) := (others => '0');
 
     -- Señales de salida
@@ -35,11 +36,12 @@ begin
         Data_length => C_Data_length
     )
     port map (
+        clk            => clk,    
         Data_in        => Data_in,
-        clk            => clk,
         selector       => selector,
         T_valid_in     => T_valid_in,
         Bus_valid_Size => Bus_valid_Size,
+        kernel         => kernel,
         Padding        => Padding,
         T_ready_out    => T_ready_out,
         Data_out_k     => Data_out_k,
@@ -61,12 +63,12 @@ begin
         -- Espera inicial sugerida para estabilización
         --wait for 100 ns;
 
-        -- Inserta el resto de tus estímulos a partir de aquí
         for i in 0 to 127 loop
             Data_in((1023 - (i*8)) downto (1016 - (i*8))) <= std_logic_vector(to_unsigned(i + 1, 8));
         end loop;
         Bus_valid_Size <= "100"; --128x128
-        Padding <= "00"; -- Padding de cero
+        kernel  <= "10"; -- kernel de 5x5
+        Padding <= "01"; -- Padding de cero
         
         --Se llena el kernel
         wait for 3*clk_period;
