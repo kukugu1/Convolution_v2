@@ -8,7 +8,7 @@ entity Mask_Matriz is
     );
     Port(
         clk, load     : in std_logic;
-        Tamano_kernel : in std_logic_vector(1 downto 0); 
+        Tamano_kernel : in std_logic_vector(1 downto 0);
         Data_in       : in Data_array(0 to NUM_REGS-1);
         Data_out      : out Data_array(0 to 26)
     );
