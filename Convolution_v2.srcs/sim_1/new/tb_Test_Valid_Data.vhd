@@ -68,8 +68,8 @@ begin
         end loop;
         Bus_valid_Size <= "100"; --128x128
         Padding <= "00"; -- Padding de cero
-        kernel <= "01"; -- kernel de 5x5
-        Stride <= "01"; -- Stride de 1
+        kernel <= "11"; -- kernel de 5x5
+        Stride <= "10"; -- Stride de 1
         
         --Se llena el kernel
         wait for 3*clk_period;

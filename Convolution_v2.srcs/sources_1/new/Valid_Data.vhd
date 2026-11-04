@@ -78,19 +78,18 @@ begin
                     SR_Capture <= '0';
                     x <= x + 1;
                     if Stride = "01" then
-                        SR_Capture <= '0';
                         x          <= x + 1;
                         Est        <= E1;
                     elsif Stride = "10" then
-                        Est        <= E8;
+                        x          <= x + 1;
+                        Est        <= E9;
                     elsif Stride = "11" then
                         Est        <= E16;
                     else
                         Est        <= ini;
                     end if;
                     
-                when E1 =>
-                    -- Solo para kernel de 5x5                
+                when E1 =>             
                     if x = 135*4+6 then
                         SR_Capture <= '0';
                         x          <= 0;
@@ -109,8 +108,7 @@ begin
                     Est        <= E3;
                                         
                 when E3 =>
-                    -- Solo para kernel de 5x5
-                    if x = signal_mixer - 5 then
+                    if x = signal_mixer - kernel_size then
                         SR_Capture <= '0';
                         x          <= 0;
                         c          <= c + 1;
@@ -135,8 +133,7 @@ begin
                         Est        <= E4;
                     end if;
                                      
-                when E5 =>     
-                    -- Solo para kernel de 5x5
+                when E5 =>
                     if y = signal_mixer - kernel_size then
                         SR_Capture <= '1';
                         x          <= x + 1;
@@ -151,11 +148,11 @@ begin
                                        
                 when E6 => 
                     -- Solo para kernel de 5x5
-                    if x = signal_mixer - 5 then
+                    if x = signal_mixer - kernel_size then
                         SR_Capture <= '0';
                         x          <= 0;
-                        c          <= 0;
                         y          <= 0;
+                        c          <= c + 1;
                         Est        <= E7;
                     else
                         SR_Capture <= '1';
@@ -163,62 +160,66 @@ begin
                         c          <= c + 1;
                         Est        <= E6;
                     end if;
-                    
-                when E7 =>
-                    x   <= x + 1;
-                    Est <= E8;
                 
-                when E8 =>
-                    if x = 3 then
-                        x   <= 0;
-                        Est <= E9;
+                when E7 =>
+                    if c = 128 - 1 then
+                        c          <= 0;
+                        Est        <= E8;
                     else
-                        x   <= x + 1;
-                        Est <= E8;
+                        SR_Capture <= '0';
+                        x          <= 0;
+                        y          <= 0;
+                        c          <= c + 1;
+                        Est        <= E7;
                     end if;
                     
-                when E9 =>
+                when E8 =>
                     SR_Capture <= '0';
                     x          <= x + 1;
                     Est        <= ini;
                 
---                when E8 =>
---                    SR_Capture <= '0';
---                    x <= x + 1;
---                    if x = 132 * 4 + 2 then
---                        Est <= E9;
---                    else
---                        Est <= E8;
---                    end if;
-                                      
---                when E9 =>
---                    SR_Capture <= '0';
---                    x <= 0;   
---                    Est <= E10;
+                when E9 =>
+                    if x = 135 * 4 + 6 then
+                        x   <= 0;
+                        c   <= 0;
+                        Est <= E10;
+                    else
+                        x   <= x + 1;
+                        Est <= E9;
+                    end if;
+                    
+                when E10 =>
+                    SR_Capture <= '1';
+                    x          <= x + 1;
+                    c          <= c + 1;
+                    Est        <= E11;
                                      
---                when E10 =>
---                    SR_Capture <= '1';
---                    x <= x + 1;      
---                    c <= c + 1;
---                    Est <= E11;
+                when E11 =>
+                    SR_Capture <= '0';
+                    c          <= c + 1;
+                    Est        <= E12;
                                   
---                when E11 =>
---                    SR_Capture <= '0';
---                    x <= x + 1;  
---                    if x = (signal_mixer/2)-2 then
---                        Est <= E12;
---                    else
---                        Est <= E10;
---                    end if;   
+                when E12 =>
+                    if x = (signal_mixer/2) then
+                        x          <= 0;
+                        c          <= c + 1;
+                        Est        <= E13;
+                    else
+                        SR_Capture <= '1';
+                        x          <= x + 1;
+                        c          <= c + 1;
+                        Est        <= E11;
+                    end if;   
                                      
---                when E12 =>
---                    SR_Capture <= '0';
---                    x <= 0;  
---                    if c = 132-1 then
---                        Est <= E13;
---                    else
---                        Est <= E12;
---                    end if;
+                when E13 =>
+                    if c = 135-1 then
+                        x   <= x + 1;
+                        Est <= E14;
+                    else
+                        x   <= 0;
+                        c   <= c + 1;
+                        Est <= E14;
+                    end if;
                                         
 --                when E13 =>
 --                    SR_Capture <= '1';
