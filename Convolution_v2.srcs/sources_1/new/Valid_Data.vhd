@@ -213,7 +213,7 @@ begin
                     end if;
                                         
                 when E13 =>
-                    if x = 135 + 4 then
+                    if x = 135 then
                         x   <= 0;
                         c   <= 0;
                         y   <= y + 1;

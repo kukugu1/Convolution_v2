@@ -43,7 +43,7 @@ begin
     
     clk_load <= clk AND load;
     
-    Registers : entity work.AT_Registros
+    Registros : entity work.AT_Registros
     generic map(
         NUM_REGS => NUM_REGS
     )
