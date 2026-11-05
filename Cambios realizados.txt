@@ -1,0 +1,2 @@
+- Se terminó de describir la carta ASM de la máquina de estados de Valid_Data.
+- Cambio de arquitectura de Adder Tree a versión jerárquica. 

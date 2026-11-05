@@ -230,9 +230,39 @@ begin
                         c          <= c + 1;
                         Est        <= E15;
                     else
-                        
+                        SR_Capture <= '1';
+                        x          <= x + 1;
+                        c          <= c + 1;
+                        Est        <= E10;
                     end if;
                 
+                when E15 =>
+                    SR_Capture <= '0';
+                    c          <= c + 1;
+                    Est        <= E16;
+                    
+                when E16 =>
+                    if x=(signal_mixer-kernel_size)/2 then
+                        c          <= c + 1;
+                        Est        <= E17;
+                    else
+                        SR_Capture <= '1';
+                        x          <= x + 1;
+                        c          <= c + 1;
+                        Est        <= E15;
+                    end if;
+                
+                when E17 =>
+                    if c = 129 - 1 then
+                        SR_Capture <= '0';
+                        x          <= 0;
+                        c          <= 0;
+                        y          <= 0;
+                        Est        <= ini;
+                    else
+                        c          <= c + 1;
+                        Est        <= E17;
+                    end if;
                 when others =>
                     SR_Capture <= '0';
             end case;
