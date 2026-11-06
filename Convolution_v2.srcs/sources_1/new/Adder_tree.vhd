@@ -30,12 +30,12 @@ architecture Behavioral of Adder_tree is
     signal s6 : Vector_Array(0 to 0)(21 downto 0); 
     
 -- Registros de corrimiento
-    signal kernel4x4 : Vector_Array(0 to 0)(21 downto 0);           
-    signal kernel3x3 : Vector_Array(0 to 1)(19 downto 0); 
-    signal kernel2x2 : Vector_Array(0 to 3)(17 downto 0);
+    signal kernel4x4 : Vector_Array(0 to 0)(21 downto 0); -- 1 ciclo de corrimiento de dato de 22 bits.
+    signal kernel3x3 : Vector_Array(0 to 1)(19 downto 0); -- 2 ciclos de corrimiento de dato de 20 bits.
+    signal kernel2x2 : Vector_Array(0 to 3)(17 downto 0); -- 4 ciclos de corrimiento de dato de 18 bits.
 
-    signal k1x1        : Matrix_Array(0 to 3, 0 to 5)(15 downto 0);
-    signal corrimiento : Matrix_Array(0 to 1, 0 to 1)(18 downto 0);
+    signal k1x1        : Matrix_Array(0 to 3, 0 to 5)(15 downto 0); -- 4 datos de corrimiento de índice de registros 26, 18, 9 y 0. 6 ciclos de reloj de corrimiento.
+    signal corrimiento : Matrix_Array(0 to 1, 0 to 1)(18 downto 0); -- 2 datos de corrimiento, ambos en el cuarto estado, donde máximo se hace un corrimiento de 2 ciclos de reloj. 
     
     signal clk_load  : std_logic;
 
