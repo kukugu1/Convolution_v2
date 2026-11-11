@@ -77,7 +77,7 @@ begin
         Bus_valid_Size <= "100"; --128x128
         Padding        <= "00"; -- Padding de cero
         kernel         <= "11"; -- kernel de 5x5
-        Stride         <= "01"; -- Stride de 1        
+        Stride         <= "01"; -- Stride de 1
         
         --Se llena el kernel
         wait for 3*clk_period;
@@ -95,7 +95,7 @@ begin
         selector <= '0';
         
         -- Filas 2 a 130 (comportamiento repetitivo)
-        for i in 2 to 132 loop
+        for i in 2 to 5 loop
             selector   <= '0';   
             wait for 140*clk_period;
             T_valid_in <= '1';

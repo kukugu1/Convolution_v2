@@ -36,7 +36,7 @@ signal Not_WAIT, clk_WAIT           : std_logic;
 
 begin
 
-    clk_EN_1M <= clk and EN_1M;
+    clk_EN_1M <= clk and EN_1M AND Not_WAIT;
     clk_EN_1K <= clk and EN_1K;
     EN_1      <= EN_1M OR EN_1K;
     Not_WAIT  <= NOT WAIT_0;
@@ -214,7 +214,7 @@ begin
    Serial_Parallel_Register : entity work.Registro_serie_paralelo
     generic map(
         DATA_WIDTH => 32,
-        TOTAL_WIDTH => 4224
+        TOTAL_WIDTH => 32*132
     )
     port map(
         clk => clk,

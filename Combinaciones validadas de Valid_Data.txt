@@ -7,6 +7,6 @@ Bus_valid_Size <= 128x128, kernel <= 2x2, Stride <= 1		 	=> Funciona
 Bus_valid_Size <= 64x64,     kernel <= 5x5, Stride <= 1		 	=> Funciona
 Bus_valid_Size <= 32x32,     kernel <= 5x5, Stride <= 1		 	=> Funciona
 Bus_valid_Size <= 16x16,     kernel <= 5x5, Stride <= 1		 	=> Funciona
-Bus_valid_Size <= 8x8,         kernel <= 5x5, Stride <= 1		 	=> Funciona
+Bus_valid_Size <= 8x8,       kernel <= 5x5, Stride <= 1		 	=> Funciona
 
 Funciona combinaciones de Bus_valid_Size y de kernel a Stride de 1 y Padding de 0.

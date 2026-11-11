@@ -55,7 +55,7 @@ begin
                     
     process(clk)
     begin
-        if falling_edge(clk) then
+        if rising_edge(clk) then
             case Est is
                 when ini =>
                     if VALID_OUT = '1' then
@@ -78,13 +78,11 @@ begin
                     Est  <= E2;
                                  
                 when E2 =>
-                    CAP  <= '1';
                     x    <= x + 1;
                     Est  <= E3;
                     
-                when E3 => 
-                    x <= x + 1;
-                    if x = ((imagen_size+2*Padding_size-kernel_size)/Stride_size)-2 then
+                when E3 =>
+                    if x = imagen_size-kernel_size+6 then
                         CAP    <= '0';
                         EN_2   <= '0';
                         WAIT_0 <= '1';
