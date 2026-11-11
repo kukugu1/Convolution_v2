@@ -12,7 +12,7 @@ entity Control_Bus_in is
         Bus_valid_Size         : in std_logic_vector(2 downto 0);
         kernel, Padding        : in std_logic_vector(1 downto 0);
         rst, CAP, SEL, T_ready : out std_logic;
-        EN_1M, EN_1K           : buffer std_logic
+        EN_1K, EN_1M           : buffer std_logic
     );
 end Control_Bus_in;
 

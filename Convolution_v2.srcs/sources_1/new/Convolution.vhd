@@ -44,26 +44,30 @@ begin
     
     CBI : entity work.Control_Bus_in
     generic map(
-        kernel_size => 27,
-        matriz_size => 128
+        Register_kernel_size => 27,
+        matriz_size          => 128
     )
     port map(
         clk            => clk_WAIT,
         selector       => selector,
         T_valid        => T_valid_in,
         Bus_valid_Size => Bus_valid_Size,
+        kernel         => kernel,
         Padding        => Padding,
         rst            => rst_RPS,
         CAP            => CAP_RPS,
-        EN_1K          => EN_1K,
-        EN_1           => EN_1M,
         SEL            => SEL,
-        T_ready        => T_ready_out
+        T_ready        => T_ready_out,        
+        EN_1K          => EN_1K,
+        EN_1M          => EN_1M
     );
     
     Parallel_Serial_Register : entity work.Registro_paralelo_serie
     generic map(
-        Data_length => Data_length
+        Data_length => Data_length,
+        Pad_words   => 2,
+        kernel_plus => 3,
+        Pad_value   => '0'
     )
     port map(
         clk      => clk,
@@ -100,11 +104,11 @@ begin
     
     Matrix_Registers : entity work.Registros_Matriz
     generic map(
-        Data_length => 8,
-        Matriz_size => 132,
-        ROW_LENGTH  => 5,
-        NUM_ROWS    => 5,
-        KERNEL_SIZE => 5 
+        Data_length    => 8,
+        Matriz_size    => 135,
+        ROW_LENGTH_FFD => 5,
+        NUM_ROWS_FFD   => 5,
+        KERNEL_SIZE    => 5
     )
     port map(
         clk      => clk_EN_1M,
@@ -117,7 +121,7 @@ begin
     VD : entity work.Valid_Data
     generic map(
         DELAY_AdderTree_Enable => 1,
-        DELAY_VALID_OUT        => 7
+        DELAY_VALID_OUT        => 8
     )
     port map(
         clk              => clk_EN_1M,

@@ -8,7 +8,7 @@ entity AT_Registros is
         NUM_REGS : integer := 27
     );
     Port (
-        clk                                : in std_logic;
+        clk, load                          : in std_logic;
         Data_in_kernel, Data_in_matriz     : in Data_array(0 to NUM_REGS-1);    
         Registros_kernel, Registros_matriz : out Data_array(0 to NUM_REGS-1)
     );
@@ -20,8 +20,10 @@ begin
     process(clk)
     begin
         if rising_edge(clk) then
-            Registros_kernel <= Data_in_kernel;
-            Registros_matriz <= Data_in_matriz;
+            if load = '1' then
+                Registros_kernel <= Data_in_kernel;
+                Registros_matriz <= Data_in_matriz;
+            end if;
         end if;
     end process;
 

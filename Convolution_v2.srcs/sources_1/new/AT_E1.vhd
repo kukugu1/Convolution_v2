@@ -8,7 +8,7 @@ entity AT_E1 is
         NUM_REGS : integer := 27
     );
     Port (
-        clk                                : in std_logic;
+        clk, load                          : in std_logic;
         Registros_kernel, Registros_matriz : in Data_array(0 to NUM_REGS-1);
         P                                  : out Vector_Array(0 to NUM_REGS-1)(15 downto 0)
     );
@@ -22,11 +22,13 @@ begin
     process(clk)
     begin
         if rising_edge(clk) then
-            for i in 0 to NUM_REGS-1 loop
-                P(i) <= std_logic_vector(
-                    signed(Registros_kernel(i)) * signed(Registros_matriz(i))
-                    );
-            end loop;    
+            if load = '1' then
+                for i in 0 to NUM_REGS-1 loop
+                    P(i) <= std_logic_vector(
+                        signed(Registros_kernel(i)) * signed(Registros_matriz(i))
+                        );
+                end loop;
+            end if;
         end if;
     end process;
 

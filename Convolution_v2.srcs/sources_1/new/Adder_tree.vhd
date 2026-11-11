@@ -41,14 +41,15 @@ architecture Behavioral of Adder_tree is
 
 begin   
     
-    clk_load <= clk AND load;
+    --clk_load <= clk AND load;
     
     Registros : entity work.AT_Registros
     generic map(
         NUM_REGS => NUM_REGS
     )
     port map(
-        clk              => clk_load,
+        clk              => clk,
+        load             => load,
         Data_in_kernel   => Data_in_kernel,
         Data_in_matriz   => Data_in_matriz,
         Registros_kernel => Registros_kernel,
@@ -60,7 +61,8 @@ begin
         NUM_REGS => NUM_REGS
     )
     port map(
-        clk              => clk_load,
+        clk              => clk,
+        load             => load,
         Registros_kernel => Registros_kernel,
         Registros_matriz => Registros_matriz,
         P                => P
@@ -71,28 +73,34 @@ begin
         NUM_REGS => NUM_REGS
     )
     port map(
-        clk => clk_load,
-        P   => P,
-        s1  => s1
+        clk  => clk,
+        load => load,
+        P    => P,
+--        k1x1 => k1x1,
+        s1   => s1
     );
     
     E3 : entity work.AT_E3
     port map(
-        clk => clk_load,
-        s1  => s1,
-        s2  => s2
+        clk  => clk,
+        load => load,
+        s1   => s1,
+--        k1x1 => k1x1,
+        s2   => s2
     );
     
     E4 : entity work.AT_E4
     port map(
-        clk => clk_load,
-        s2  => s2,
-        s3  => s3
+        clk  => clk,
+        load => load,
+        s2   => s2,
+        s3   => s3
     );
     
     E5 : entity work.AT_E5
     port map(
-        clk  => clk_load,
+        clk  => clk,
+        load => load,
         s3   => s3,
         k1x1 => k1x1,
         s4   => s4
@@ -100,7 +108,8 @@ begin
     
     E6 : entity work.AT_E6
     port map(
-        clk         => clk_load,
+        clk         => clk,
+        load        => load,
         s4          => s4,
         corrimiento => corrimiento,
         s5          => s5
@@ -108,90 +117,55 @@ begin
     
     E7 : entity work.AT_E7
     port map(
-        clk         => clk_load,
+        clk         => clk,
+        load        => load,
         s5          => s5,
         corrimiento => corrimiento,
         s6          => s6
     );     
-    process(clk_load)
+    process(clk)
     begin
-        if rising_edge(clk_load) then
---            Registros_kernel <= Data_in_kernel;
---            Registros_matriz <= Data_in_matriz;
-                   
-        --  Etapa 1 Multiplicación
---            for i in 0 to NUM_REGS-1 loop
---                P(i) <= std_logic_vector(
---                    signed(Registros_kernel(i)) * signed(Registros_matriz(i))
---                    );
---            end loop;
-            
-        -- Etapa 2 Suma        
-            k1x1(0,0) <= P(26);
-            k1x1(1,0) <= P(18);            
-            k1x1(2,0) <= P(9);
-            k1x1(3,0) <= P(0);                                                
---            for i in 0 to 11 loop    
---                s1(i) <= std_logic_vector(
---                    resize(signed(P(PAR_ALTO_1(i))), 17) + 
---                    resize(signed(P(PAR_BAJO_1(i))), 17)
---                );                   
---            end loop; 
-            
-        -- Etapa 3 Suma        
-            k1x1(0,1) <= k1x1(0,0);
-            k1x1(1,1) <= k1x1(1,0);            
-            k1x1(2,1) <= k1x1(2,0);
-            k1x1(3,1) <= k1x1(3,0);               
---            for i in 0 to 5 loop    
---                s2(i) <= std_logic_vector(
---                    resize(signed(s1(PAR_ALTO_2(i))), 18) + 
---                    resize(signed(s1(PAR_BAJO_2(i))), 18)
---                );                  
---            end loop;   
-
-        -- Etapa 4 Suma 
-            --k1x1(0,2) <= k1x1(0,1);
-            k1x1(1,2) <= k1x1(1,1);            
-            k1x1(2,2) <= k1x1(2,1);
-            k1x1(3,2) <= k1x1(3,1);         
-            kernel2x2(0) <= s2(0);
---            for i in 0 to 2 loop
---                s3(i) <= std_logic_vector(
---                    resize(signed(s2(PAR_ALTO_3(i))), 19) + 
---                    resize(signed(s2(PAR_BAJO_3(i))), 19)
---                );               
---            end loop;  
-            
-        -- Etapa 5 Suma 
-            --k1x1(0,3) <= k1x1(0,2);
-            kernel2x2(1) <= kernel2x2(0);                    
-            corrimiento(0,0) <= s3(1);
-            corrimiento(0,1) <= s3(2);            
---            for i in 0 to 2 loop               
---                s4(i) <= std_logic_vector(
---                    resize(signed(s3(PAR_ALTO_4(i))), 20) + 
---                    resize(signed(k1x1(PAR_BAJO_4(i),2)), 20)
---                );
---            end loop;   
-            
-        -- Etapa 6 Suma
-            --k1x1(0,4) <= k1x1(0,3);
-            kernel2x2(2) <= kernel2x2(1);
-            kernel3x3(1) <= s4(0);                                            
-            corrimiento(1,1) <= corrimiento(0,1);         
---            s5(0) <= std_logic_vector(
---                      resize(signed(s4(0)), 21) + resize(signed(corrimiento(0,0)), 21)
---                  );
-                  
-        -- Etapa 7 Suma 
-            --k1x1(0,5) <= k1x1(0,4);
-            kernel2x2(3) <= kernel2x2(2);
-            kernel3x3(0) <= kernel3x3(1);                                                        
-            kernel4x4(0) <= s5(0) & '0';
---            s6(0) <= std_logic_vector(
---                      resize(signed(s5(0)), 22) + resize(signed(corrimiento(1,1)), 22)
---                  );                                                                        
+        if rising_edge(clk) then
+            if load = '1' then
+                
+            -- Etapa 2 Suma        
+                k1x1(0,0) <= P(26);
+                k1x1(1,0) <= P(18);
+                k1x1(2,0) <= P(9);
+                k1x1(3,0) <= P(0);
+                
+            -- Etapa 3 Suma        
+                k1x1(0,1) <= k1x1(0,0);
+                k1x1(1,1) <= k1x1(1,0);            
+                k1x1(2,1) <= k1x1(2,0);
+                k1x1(3,1) <= k1x1(3,0);
+    
+            -- Etapa 4 Suma 
+                --k1x1(0,2) <= k1x1(0,1);
+                k1x1(1,2) <= k1x1(1,1);
+                k1x1(2,2) <= k1x1(2,1);
+                k1x1(3,2) <= k1x1(3,1);
+                kernel2x2(0) <= s2(0);
+                
+            -- Etapa 5 Suma 
+                --k1x1(0,3) <= k1x1(0,2);
+                kernel2x2(1) <= kernel2x2(0);
+                corrimiento(0,0) <= s3(1);
+                corrimiento(0,1) <= s3(2);
+                
+            -- Etapa 6 Suma
+                --k1x1(0,4) <= k1x1(0,3);
+                kernel2x2(2) <= kernel2x2(1);
+                kernel3x3(1) <= s4(0);
+                corrimiento(1,1) <= corrimiento(0,1);
+                
+            -- Etapa 7 Suma 
+                --k1x1(0,5) <= k1x1(0,4);
+                kernel2x2(3) <= kernel2x2(2);
+                kernel3x3(0) <= kernel3x3(1);                                                        
+                kernel4x4(0) <= s5(0) & '0';
+                                         
+            end if;
         end if;
     end process;
     

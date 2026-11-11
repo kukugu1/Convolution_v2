@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="7,421.840 ns"></ZoomStartTime>
-      <ZoomEndTime time="7,588.638 ns"></ZoomEndTime>
-      <Cursor1Time time="7,480.831 ns"></Cursor1Time>
+      <ZoomStartTime time="6,096.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="6,340.401 ns"></ZoomEndTime>
+      <Cursor1Time time="6,145.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="229"></NameColumnWidth>
-      <ValueColumnWidth column_width="90"></ValueColumnWidth>
+      <ValueColumnWidth column_width="85"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="9" />
    <wvobject fp_name="/tb_Convolution/clk" type="logic">
@@ -126,12 +126,6 @@
          <obj_property name="CustomSignalColor">#00FFFF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_Convolution/uut/CBI/EN_1" type="logic">
-         <obj_property name="ElementShortName">EN_1</obj_property>
-         <obj_property name="ObjectShortName">EN_1</obj_property>
-         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-      </wvobject>
       <wvobject fp_name="/tb_Convolution/uut/CBI/x" type="other">
          <obj_property name="ElementShortName">x</obj_property>
          <obj_property name="ObjectShortName">x</obj_property>
@@ -161,55 +155,9 @@
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_Convolution/uut/Parallel_Serial_Register/Registro_corrimiento" type="array">
-         <obj_property name="ElementShortName">Registro_corrimiento[1055:0]</obj_property>
-         <obj_property name="ObjectShortName">Registro_corrimiento[1055:0]</obj_property>
+         <obj_property name="ElementShortName">Registro_corrimiento[1079:0]</obj_property>
+         <obj_property name="ObjectShortName">Registro_corrimiento[1079:0]</obj_property>
          <obj_property name="CustomSignalColor">#FFD700</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-      </wvobject>
-   </wvobject>
-   <wvobject fp_name="group536" type="group">
-      <obj_property name="label">VALID DATA</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_Convolution/uut/VD/Est" type="other">
-         <obj_property name="ElementShortName">Est</obj_property>
-         <obj_property name="ObjectShortName">Est</obj_property>
-         <obj_property name="CustomSignalColor">#FF0080</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_Convolution/uut/VD/SR_Capture" type="logic">
-         <obj_property name="ElementShortName">SR_Capture</obj_property>
-         <obj_property name="ObjectShortName">SR_Capture</obj_property>
-         <obj_property name="CustomSignalColor">#FF0080</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_Convolution/uut/VD/AdderTree_Enable" type="logic">
-         <obj_property name="ElementShortName">AdderTree_Enable</obj_property>
-         <obj_property name="ObjectShortName">AdderTree_Enable</obj_property>
-         <obj_property name="CustomSignalColor">#FF0080</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_Convolution/uut/VD/VALID_OUT" type="logic">
-         <obj_property name="ElementShortName">VALID_OUT</obj_property>
-         <obj_property name="ObjectShortName">VALID_OUT</obj_property>
-         <obj_property name="CustomSignalColor">#FF0080</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_Convolution/uut/VD/x" type="other">
-         <obj_property name="ElementShortName">x</obj_property>
-         <obj_property name="ObjectShortName">x</obj_property>
-         <obj_property name="CustomSignalColor">#FF0080</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_Convolution/uut/VD/y" type="other">
-         <obj_property name="ElementShortName">y</obj_property>
-         <obj_property name="ObjectShortName">y</obj_property>
-         <obj_property name="CustomSignalColor">#FF0080</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_Convolution/uut/VD/c" type="other">
-         <obj_property name="ElementShortName">c</obj_property>
-         <obj_property name="ObjectShortName">c</obj_property>
-         <obj_property name="CustomSignalColor">#FF0080</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
    </wvobject>
@@ -220,7 +168,6 @@
       <wvobject fp_name="group565" type="group">
          <obj_property name="label">KERNEL</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/tb_Convolution/uut/Kernel_Registers/Data_out" type="array">
             <obj_property name="DisplayName">label</obj_property>
             <obj_property name="ElementShortName">Data_out[0:26][7:0]</obj_property>
@@ -264,10 +211,56 @@
          </wvobject>
       </wvobject>
    </wvobject>
+   <wvobject fp_name="group536" type="group">
+      <obj_property name="label">VALID DATA</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_Convolution/uut/VD/Est" type="other">
+         <obj_property name="ElementShortName">Est</obj_property>
+         <obj_property name="ObjectShortName">Est</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/VD/SR_Capture" type="logic">
+         <obj_property name="ElementShortName">SR_Capture</obj_property>
+         <obj_property name="ObjectShortName">SR_Capture</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/VD/AdderTree_Enable" type="logic">
+         <obj_property name="ElementShortName">AdderTree_Enable</obj_property>
+         <obj_property name="ObjectShortName">AdderTree_Enable</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/VD/VALID_OUT" type="logic">
+         <obj_property name="ElementShortName">VALID_OUT</obj_property>
+         <obj_property name="ObjectShortName">VALID_OUT</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/VD/x" type="other">
+         <obj_property name="ElementShortName">x</obj_property>
+         <obj_property name="ObjectShortName">x</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/VD/y" type="other">
+         <obj_property name="ElementShortName">y</obj_property>
+         <obj_property name="ObjectShortName">y</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Convolution/uut/VD/c" type="other">
+         <obj_property name="ElementShortName">c</obj_property>
+         <obj_property name="ObjectShortName">c</obj_property>
+         <obj_property name="CustomSignalColor">#FF0080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
    <wvobject fp_name="group570" type="group">
       <obj_property name="label">ADDER TREE y BaS</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_Convolution/uut/AdderTree/Registros_kernel" type="array">
          <obj_property name="ElementShortName">Registros_kernel[0:26][7:0]</obj_property>
          <obj_property name="ObjectShortName">Registros_kernel[0:26][7:0]</obj_property>
@@ -307,7 +300,6 @@
    <wvobject fp_name="group553" type="group">
       <obj_property name="label">CONTROL BUS OUT</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_Convolution/uut/CBO/Est" type="other">
          <obj_property name="ElementShortName">Est</obj_property>
          <obj_property name="ObjectShortName">Est</obj_property>
@@ -354,7 +346,6 @@
    <wvobject fp_name="group236" type="group">
       <obj_property name="label">REGISTRO SERIE PARALELO</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_Convolution/uut/Serial_Parallel_Register/captured_data" type="array">
          <obj_property name="ElementShortName">captured_data[31:0]</obj_property>
          <obj_property name="ObjectShortName">captured_data[31:0]</obj_property>

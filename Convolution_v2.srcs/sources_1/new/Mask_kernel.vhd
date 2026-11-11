@@ -25,16 +25,18 @@ signal clk_load  : std_logic;
 
 begin
 
-    clk_load <= clk AND load;
+    --clk_load <= clk AND load;
 
-    process(clk_load)
+    process(clk)
     begin
-        if rising_edge(clk_load) then
-            Registros <= Data_in;
+        if rising_edge(clk) then
+            if load = '1' then
+                Registros <= Data_in;
+            end if;
         end if;
     end process;
 
-    process(clk_load)
+    process(Tamano_kernel, Registros)
     begin
         case Tamano_kernel is
             -- KERNEL 5X5

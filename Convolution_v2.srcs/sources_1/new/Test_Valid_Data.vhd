@@ -100,7 +100,7 @@ begin
         Matriz_size    => 135,
         ROW_LENGTH_FFD => 5,
         NUM_ROWS_FFD   => 5,
-        KERNEL_SIZE    => 5 
+        KERNEL_SIZE    => 5
     )
     port map(
         clk      => clk_EN_1M,
@@ -128,11 +128,11 @@ begin
     
     Kernel_Mask : entity work.Mask_kernel
     generic map(
-        NUM_REGS => 27 
+        NUM_REGS => 27
     )
     port map(
         clk           => clk,
-        load          => SR_Capture,    
+        load          => SR_Capture,
         Tamano_kernel => kernel,
         Data_in       => Registros_kernel,
         Data_out      => Registros_Kernel_Mask
@@ -141,9 +141,9 @@ begin
     Matrix_Mask : entity work.Mask_Matriz
     generic map(
         NUM_REGS => 25
-    )    
+    )
     port map(
-        clk           => clk,    
+        clk           => clk,
         load          => SR_Capture,
         Tamano_kernel => kernel,
         Data_in       => Registros_matriz,
@@ -159,20 +159,20 @@ begin
         load           => AdderTree_Enable,
         Data_in_kernel => Registros_Kernel_Mask,
         Data_in_matriz => Registros_Matriz_Mask,
-        Data_out_5x5   => Data_out_5x5, 
-        Data_out_4x4   => Data_out_4x4, 
-        Data_out_3x3   => Data_out_3x3, 
+        Data_out_5x5   => Data_out_5x5,
+        Data_out_4x4   => Data_out_4x4,
+        Data_out_3x3   => Data_out_3x3,
         Data_out_2x2   => Data_out_2x2
     );            
     
     Adder_Tree_Mask : entity work.Mask_Adder_tree
     port map(
         Tamano_kernel => kernel,
-        Data_out_5x5  => Data_out_5x5, 
-        Data_out_4x4  => Data_out_4x4, 
-        Data_out_3x3  => Data_out_3x3, 
-        Data_out_2x2  => Data_out_2x2, 
+        Data_out_5x5  => Data_out_5x5,
+        Data_out_4x4  => Data_out_4x4,
+        Data_out_3x3  => Data_out_3x3,
+        Data_out_2x2  => Data_out_2x2,
         Data_out      => Salida_Mask_Adder_Tree
-    );        
+    );
 
 end Behavioral;

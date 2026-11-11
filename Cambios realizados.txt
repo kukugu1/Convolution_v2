@@ -1,2 +1,4 @@
-- Se terminó de describir la carta ASM de la máquina de estados de Valid_Data.
-- Cambio de arquitectura de Adder Tree a versión jerárquica. 
+- Se modificó la máscara de la matriz.
+- Se completó la máquina de estados de Valid_Data incluyendo Stride de tres.
+- Se modificó la página de Excel de las combinaciones de Valid_Data para los estados de la nueva máquina de estados.
+- Se aplicaron los cambios para la máquina de estados Control_Bus_Out.

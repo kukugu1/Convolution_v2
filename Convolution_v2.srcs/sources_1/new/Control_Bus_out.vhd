@@ -7,8 +7,8 @@ entity Control_Bus_out is
         clk, VALID_OUT, T_ready : in std_logic;
         Padding, kernel, Stride : in std_logic_vector(1 downto 0);
         Bus_valid_Size          : in std_logic_vector(2 downto 0);
-        WAIT_0                  : buffer std_logic;        
-        RST, CAP, EN_2, T_valid : out std_logic
+        RST, CAP, EN_2, T_valid : out std_logic;
+        WAIT_0                  : buffer std_logic
     );
 end Control_Bus_out;
 
@@ -58,71 +58,66 @@ begin
         if falling_edge(clk) then
             case Est is
                 when ini =>
-                    RST <= '1';
-                    CAP <= '0';
-                    EN_2 <= '0';
-                    T_valid <= '0';
-                    WAIT_0 <= '0';
                     if VALID_OUT = '1' then
-                        Est <= E1;
+                        RST     <= '0';
+                        CAP     <= '1';
+                        x       <= 0;
+                        Est     <= E1;
                     else
-                        Est <= ini;
+                        RST     <= '1';
+                        CAP     <= '0';
+                        EN_2    <= '0';
+                        T_valid <= '0';
+                        WAIT_0  <= '0';
+                        Est     <= ini;
                     end if;        
                             
                 when E1 =>
-                    RST <= '0';
-                    CAP <= '1';
-                    EN_2 <= '0';
-                    T_valid <= '0';
-                    WAIT_0 <= '0';   
-                    Est <= E2;
+                    CAP  <= '1';
+                    EN_2 <= '1';
+                    Est  <= E2;
                                  
                 when E2 =>
-                    RST <= '0';
-                    CAP <= '1';
-                    EN_2 <= '1';
-                    T_valid <= '0';
-                    WAIT_0 <= '0'; 
-                    Est <= E3;
-                                   
-                when E3 => 
-                    x <= 0;
-                    Est <= E4;
+                    CAP  <= '1';
+                    x    <= x + 1;
+                    Est  <= E3;
                     
-                when E4 => 
+                when E3 => 
                     x <= x + 1;
                     if x = ((imagen_size+2*Padding_size-kernel_size)/Stride_size)-2 then
-                        Est <= E5;
+                        CAP    <= '0';
+                        EN_2   <= '0';
+                        WAIT_0 <= '1';
+                        Est    <= E4;
                     else
-                        Est <= E4;
+                        x      <= x + 1;
+                        Est    <= E3;
                     end if;
                     
-                when E5 =>
-                    RST <= '0';
-                    CAP <= '0';
-                    EN_2 <= '0';
-                    T_valid <= '0';
-                    WAIT_0 <= '1'; 
-                    Est <= E6;
-                                        
-                when E6 => 
-                    RST <= '0';
-                    CAP <= '0';
-                    EN_2 <= '0';
+                when E4 =>
                     T_valid <= '1';
-                    WAIT_0 <= '1'; 
+                    Est     <= E5;
+                                        
+                when E5 =>
                     if T_ready = '1' then
-                        Est <= ini;
+                        RST     <= '1';
+                        CAP     <= '0';
+                        EN_2    <= '0';
+                        T_valid <= '0';
+                        WAIT_0  <= '0';
+                        Est     <= ini;
                     else
-                        Est <= E6;
+                        T_valid <= '1';
+                        Est     <= E5;
                     end if;
                                     
                 when others => 
-                    RST <= '1';
-                    CAP <= '0';
-                    EN_2 <= '0';
+                    RST     <= '1';
+                    CAP     <= '0';
+                    EN_2    <= '0';
                     T_valid <= '0';
-                    WAIT_0 <= '0';
+                    WAIT_0  <= '0';
+                    
             end case;
         end if;
     end process;        
