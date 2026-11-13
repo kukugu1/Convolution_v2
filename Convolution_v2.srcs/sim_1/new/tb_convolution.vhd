@@ -102,7 +102,18 @@ begin
             
             wait for 2*clk_period;
             T_valid_in <= '0';
-        end loop; 
+        end loop;
+        
+        wait for 140*clk_period;
+        
+        T_ready_in <= '1';
+        wait for 10*clk_period;
+               
+        T_ready_in <= '0';
+        T_valid_in <= '1';
+        wait for 10*clk_period;
+        
+        T_valid_in <= '0';
        
         wait;
     end process;

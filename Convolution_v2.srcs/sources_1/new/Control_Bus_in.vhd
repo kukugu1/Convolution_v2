@@ -9,6 +9,7 @@ entity Control_Bus_in is
     );
     port(
         clk, selector, T_valid : in std_logic;
+        Not_WAIT               : in std_logic;
         Bus_valid_Size         : in std_logic_vector(2 downto 0);
         kernel, Padding        : in std_logic_vector(1 downto 0);
         rst, CAP, SEL, T_ready : out std_logic;
@@ -58,336 +59,338 @@ begin
     process(clk)
     begin
         if rising_edge(clk) then
-            case Est is
-                when ini =>
-                    rst     <= '1';
-                    CAP     <= '0';
-                    EN_1K   <= '0';                    
-                    EN_1M   <= '0';
-                    SEL     <= '0';
-                    T_ready <= '0';
-                    Est     <= E1;
-                                    
-                when E1 =>
-                    if selector = '0' then
-                        T_ready <= '1';
-                        Est     <= E2;
-                    else
-                        SEL     <= '1';
-                        Est     <= E3;
-                    end if;   
-                        
-                when E2 =>
-                    if T_valid = '1' then
-                        rst     <= '0';
-                        CAP     <= '1';
-                        T_ready <= '0';
-                        Est     <= E4;
-                    else
-                        T_ready <= '1';
-                        Est     <= E2;
-                    end if;   
-                        
-                when E3 =>
-                    SEL <= '1';                                   
-                    if Padding = "00" then
-                        rst     <= '0';
-                        T_ready <= '1';
-                        Est     <= E8;
-                    elsif Padding = "01" OR Padding = "10" then
-                        EN_1M   <= '1';
-                        Est     <= E18;
-                    else
-                        rst     <= '0';
+            if Not_WAIT = '1' then
+                case Est is
+                    when ini =>
+                        rst     <= '1';
                         CAP     <= '0';
-                        EN_1K   <= '0';
+                        EN_1K   <= '0';                    
                         EN_1M   <= '0';
                         SEL     <= '0';
                         T_ready <= '0';
-                        Est     <= ini;
-                    end if;
-                    
-                when E4 =>
-                    CAP   <= '0';
-                    EN_1K <= '1';                              
-                    Est   <= E5;
-                    
-                when E5 =>
-                    x     <= x + 1;
-                    Est   <= E6;
-                    
-                when E6 =>
-                    if x = Register_kernel_size then
-                        rst   <= '1';
-                        x     <= 0;
-                        EN_1K <= '0';
-                        Est   <= E7;
-                    else 
+                        Est     <= E1;
+                                        
+                    when E1 =>
+                        if selector = '0' then
+                            T_ready <= '1';
+                            Est     <= E2;
+                        else
+                            SEL     <= '1';
+                            Est     <= E3;
+                        end if;   
+                            
+                    when E2 =>
+                        if T_valid = '1' then
+                            rst     <= '0';
+                            CAP     <= '1';
+                            T_ready <= '0';
+                            Est     <= E4;
+                        else
+                            T_ready <= '1';
+                            Est     <= E2;
+                        end if;   
+                            
+                    when E3 =>
+                        SEL <= '1';                                   
+                        if Padding = "00" then
+                            rst     <= '0';
+                            T_ready <= '1';
+                            Est     <= E8;
+                        elsif Padding = "01" OR Padding = "10" then
+                            EN_1M   <= '1';
+                            Est     <= E18;
+                        else
+                            rst     <= '0';
+                            CAP     <= '0';
+                            EN_1K   <= '0';
+                            EN_1M   <= '0';
+                            SEL     <= '0';
+                            T_ready <= '0';
+                            Est     <= ini;
+                        end if;
+                        
+                    when E4 =>
+                        CAP   <= '0';
+                        EN_1K <= '1';                              
+                        Est   <= E5;
+                        
+                    when E5 =>
                         x     <= x + 1;
                         Est   <= E6;
-                    end if;
-                    
-                when E7 =>
-                    y       <= 0;
-                    rst     <= '1';
-                    CAP     <= '0';
-                    EN_1K   <= '0';                    
-                    EN_1M   <= '0';
-                    SEL     <= '0';
-                    T_ready <= '0';
-                    Est     <= E1;
-                                                     
-                when E8 =>                             
-                    if T_valid = '1' then
-                        CAP     <= '1';
+                        
+                    when E6 =>
+                        if x = Register_kernel_size then
+                            rst   <= '1';
+                            x     <= 0;
+                            EN_1K <= '0';
+                            Est   <= E7;
+                        else 
+                            x     <= x + 1;
+                            Est   <= E6;
+                        end if;
+                        
+                    when E7 =>
+                        y       <= 0;
+                        rst     <= '1';
+                        CAP     <= '0';
+                        EN_1K   <= '0';                    
+                        EN_1M   <= '0';
+                        SEL     <= '0';
                         T_ready <= '0';
-                        Est     <= E9;
-                    else
-                        rst     <= '0';
-                        T_ready <= '1';
-                        Est     <= E8;
-                    end if; 
-                
-                when E9 =>
-                    CAP   <= '0';
-                    EN_1M <= '1';
-                    Est   <= E10;
+                        Est     <= E1;
+                                                         
+                    when E8 =>                             
+                        if T_valid = '1' then
+                            CAP     <= '1';
+                            T_ready <= '0';
+                            Est     <= E9;
+                        else
+                            rst     <= '0';
+                            T_ready <= '1';
+                            Est     <= E8;
+                        end if; 
                     
-                when E10 =>
-                    x     <= x + 1;
-                    Est   <= E11;
-                             
-                when E11 =>
-                    if x = matriz_size + 5 then
-                        rst   <= '1';
-                        EN_1M <= '0';
-                        x     <= 0;
-                        Est   <= E12;
-                    else
+                    when E9 =>
+                        CAP   <= '0';
+                        EN_1M <= '1';
+                        Est   <= E10;
+                        
+                    when E10 =>
                         x     <= x + 1;
                         Est   <= E11;
-                    end if;
-
-                when E12 =>
-                    y   <= y + 1;
-                    Est <= E13;
-                    
-                when E13 =>
-                    if y = imagen_size then
-                        y       <= 0;
-                        Est     <= E14;
-                    else 
-                        rst     <= '0';
-                        T_ready <= '1';
-                        Est     <= E8;
-                    end if;       
-                    
-                when E14 =>
-                    y <= 0;
-                    if 5 - kernel_size - y = 0 then
-                        y       <= 0;
-                        rst     <= '1';
-                        CAP     <= '0';
-                        EN_1K   <= '0';                    
-                        EN_1M   <= '0';
-                        SEL     <= '0';
-                        T_ready <= '0';
-                        Est     <= E1;
-                    else
-                        EN_1M   <= '1';
-                        Est     <= E15;
-                    end if;
-                    
-                when E15 =>
-                    x   <= x + 1;
-                    Est <= E16;
-                    
-                when E16 =>
-                    if x = matriz_size + 5 then
-                        EN_1M <= '0';
-                        x     <= 0;
-                        y     <= y + 1;
-                        Est   <= E17;
-                    else 
-                        x     <= x + 1;
-                        Est   <= E16;
-                    end if;
-                    
-                when E17 =>
-                    if 5 - kernel_size - y = 0 then
-                        y       <= 0;
-                        rst     <= '1';
-                        CAP     <= '0';
-                        EN_1K   <= '0';                    
-                        EN_1M   <= '0';
-                        SEL     <= '0';
-                        T_ready <= '0';
-                        Est     <= E1;
-                    else
-                        EN_1M   <= '1';
-                        Est     <= E15;
-                    end if;
-                    
-                when E18 =>
-                    x   <= x + 1;
-                    Est <= E19;
-                    
-                when E19 =>
-                    if x = matriz_size + 5 then
-                        EN_1M <= '0';
-                        x     <= 0;
-                        y     <= y + 1;
-                        Est   <= E20;
-                    else
-                        x     <= x + 1;
-                        Est   <= E19;
-                    end if;
-                    
-                when E20 =>
-                    if y = padding_size then
-                        x     <= 0;
-                        y     <= 0;
-                        Est   <= E21;
-                    else
-                        EN_1M <= '1';
-                        Est   <= E18;
-                    end if;
-                    
-                when E21 =>
-                    rst     <= '0';
-                    EN_1M   <= '0';                    
-                    T_ready <= '1';
-                    Est     <= E22;      
-                    
-                when E22 =>
-                    if T_valid = '1' then
-                        CAP     <= '1';
-                        T_ready <= '0';
-                        Est     <= E23;
-                    else
+                                 
+                    when E11 =>
+                        if x = matriz_size + 5 then
+                            rst   <= '1';
+                            EN_1M <= '0';
+                            x     <= 0;
+                            Est   <= E12;
+                        else
+                            x     <= x + 1;
+                            Est   <= E11;
+                        end if;
+                
+                    when E12 =>
+                        y   <= y + 1;
+                        Est <= E13;
+                        
+                    when E13 =>
+                        if y = imagen_size then
+                            y       <= 0;
+                            Est     <= E14;
+                        else 
+                            rst     <= '0';
+                            T_ready <= '1';
+                            Est     <= E8;
+                        end if;       
+                        
+                    when E14 =>
+                        y <= 0;
+                        if 5 - kernel_size - y = 0 then
+                            y       <= 0;
+                            rst     <= '1';
+                            CAP     <= '0';
+                            EN_1K   <= '0';                    
+                            EN_1M   <= '0';
+                            SEL     <= '0';
+                            T_ready <= '0';
+                            Est     <= E1;
+                        else
+                            EN_1M   <= '1';
+                            Est     <= E15;
+                        end if;
+                        
+                    when E15 =>
+                        x   <= x + 1;
+                        Est <= E16;
+                        
+                    when E16 =>
+                        if x = matriz_size + 5 then
+                            EN_1M <= '0';
+                            x     <= 0;
+                            y     <= y + 1;
+                            Est   <= E17;
+                        else 
+                            x     <= x + 1;
+                            Est   <= E16;
+                        end if;
+                        
+                    when E17 =>
+                        if 5 - kernel_size - y = 0 then
+                            y       <= 0;
+                            rst     <= '1';
+                            CAP     <= '0';
+                            EN_1K   <= '0';                    
+                            EN_1M   <= '0';
+                            SEL     <= '0';
+                            T_ready <= '0';
+                            Est     <= E1;
+                        else
+                            EN_1M   <= '1';
+                            Est     <= E15;
+                        end if;
+                        
+                    when E18 =>
+                        x   <= x + 1;
+                        Est <= E19;
+                        
+                    when E19 =>
+                        if x = matriz_size + 5 then
+                            EN_1M <= '0';
+                            x     <= 0;
+                            y     <= y + 1;
+                            Est   <= E20;
+                        else
+                            x     <= x + 1;
+                            Est   <= E19;
+                        end if;
+                        
+                    when E20 =>
+                        if y = padding_size then
+                            x     <= 0;
+                            y     <= 0;
+                            Est   <= E21;
+                        else
+                            EN_1M <= '1';
+                            Est   <= E18;
+                        end if;
+                        
+                    when E21 =>
                         rst     <= '0';
                         EN_1M   <= '0';                    
                         T_ready <= '1';
-                        Est     <= E22;
-                    end if;
-       
-                when E23 =>
-                    CAP   <= '0';                    
-                    EN_1M <= '1';
-                    Est   <= E24; 
-
-                when E24 =>
-                    x   <= x + 1;
-                    Est <= E25;
-                    
-                when E25 =>
-                    if x = matriz_size + 5 then
-                        x     <= 0;
-                        rst   <= '1';
-                        EN_1M <= '0';
-                        Est   <= E26;
-                    else
+                        Est     <= E22;      
+                        
+                    when E22 =>
+                        if T_valid = '1' then
+                            CAP     <= '1';
+                            T_ready <= '0';
+                            Est     <= E23;
+                        else
+                            rst     <= '0';
+                            EN_1M   <= '0';                    
+                            T_ready <= '1';
+                            Est     <= E22;
+                        end if;
+                
+                    when E23 =>
+                        CAP   <= '0';                    
+                        EN_1M <= '1';
+                        Est   <= E24; 
+                
+                    when E24 =>
                         x   <= x + 1;
                         Est <= E25;
-                    end if;
-                    
-                when E26 =>
-                    y   <= y + 1;
-                    Est <= E27;
-
-                when E27 =>
-                    if y = imagen_size then
-                        x       <= 0;
-                        y       <= 0;
-                        Est     <= E28;
-                    else 
-                        rst     <= '0';
-                        EN_1M   <= '0';
-                        T_ready <= '1';
-                        Est     <= E22;
-                    end if;
-                    
-                when E28 =>
-                    EN_1M <= '1';
-                    Est   <= E29;
-                    
-                when E29 =>
-                    x   <= x + 1;
-                    Est <= E30;
-                    
-                when E30 =>
-                    if x = matriz_size + 5 then 
-                        x     <= 0;
-                        EN_1M <= '0';
-                        y     <= y + 1;
-                        Est   <= E31;
-                    else 
-                        x     <= x + 1;
-                        Est   <= E30;
-                    end if;
-
-                when E31 =>
-                    if y = padding_size then
-                        y     <= 0;
-                        Est   <= E32;
-                    else
+                        
+                    when E25 =>
+                        if x = matriz_size + 5 then
+                            x     <= 0;
+                            rst   <= '1';
+                            EN_1M <= '0';
+                            Est   <= E26;
+                        else
+                            x   <= x + 1;
+                            Est <= E25;
+                        end if;
+                        
+                    when E26 =>
+                        y   <= y + 1;
+                        Est <= E27;
+                
+                    when E27 =>
+                        if y = imagen_size then
+                            x       <= 0;
+                            y       <= 0;
+                            Est     <= E28;
+                        else 
+                            rst     <= '0';
+                            EN_1M   <= '0';
+                            T_ready <= '1';
+                            Est     <= E22;
+                        end if;
+                        
+                    when E28 =>
                         EN_1M <= '1';
                         Est   <= E29;
-                    end if;
-                    
-                when E32 =>
-                    if 5 - kernel_size - y = 0 then
-                        y       <= 0;
-                        rst     <= '1';
-                        CAP     <= '0';
-                        EN_1K   <= '0';                    
-                        EN_1M   <= '0';
-                        SEL     <= '0';
-                        T_ready <= '0';
-                        Est     <= E1;
-                    else
-                        EN_1M   <= '1';
-                        Est     <= E33;
-                    end if;
-                    
-                when E33 =>
-                    x   <= x + 1;
-                    Est <= E34;
+                        
+                    when E29 =>
+                        x   <= x + 1;
+                        Est <= E30;
+                        
+                    when E30 =>
+                        if x = matriz_size + 5 then 
+                            x     <= 0;
+                            EN_1M <= '0';
+                            y     <= y + 1;
+                            Est   <= E31;
+                        else 
+                            x     <= x + 1;
+                            Est   <= E30;
+                        end if;
                 
-                when E34 =>
-                    if x = matriz_size + 5 then
-                        x     <= 0;
-                        y     <= y + 1;
-                        EN_1M <= '0';
-                        Est   <= E35;
-                    else
-                        x     <= x + 1;
-                        Est   <= E34;
-                    end if;
+                    when E31 =>
+                        if y = padding_size then
+                            y     <= 0;
+                            Est   <= E32;
+                        else
+                            EN_1M <= '1';
+                            Est   <= E29;
+                        end if;
+                        
+                    when E32 =>
+                        if 5 - kernel_size - y = 0 then
+                            y       <= 0;
+                            rst     <= '1';
+                            CAP     <= '0';
+                            EN_1K   <= '0';                    
+                            EN_1M   <= '0';
+                            SEL     <= '0';
+                            T_ready <= '0';
+                            Est     <= E1;
+                        else
+                            EN_1M   <= '1';
+                            Est     <= E33;
+                        end if;
+                        
+                    when E33 =>
+                        x   <= x + 1;
+                        Est <= E34;
                     
-                when E35 =>
-                    if 5 - kernel_size - y = 0 then
-                        y       <= 0;
+                    when E34 =>
+                        if x = matriz_size + 5 then
+                            x     <= 0;
+                            y     <= y + 1;
+                            EN_1M <= '0';
+                            Est   <= E35;
+                        else
+                            x     <= x + 1;
+                            Est   <= E34;
+                        end if;
+                        
+                    when E35 =>
+                        if 5 - kernel_size - y = 0 then
+                            y       <= 0;
+                            rst     <= '1';
+                            CAP     <= '0';
+                            EN_1K   <= '0';                    
+                            EN_1M   <= '0';
+                            SEL     <= '0';
+                            T_ready <= '0';
+                            Est     <= E1;
+                        else
+                            EN_1M   <= '1';
+                            Est     <= E33;
+                        end if;
+                                                                                                                         
+                    when others =>
                         rst     <= '1';
                         CAP     <= '0';
                         EN_1K   <= '0';                    
                         EN_1M   <= '0';
                         SEL     <= '0';
-                        T_ready <= '0';
-                        Est     <= E1;
-                    else
-                        EN_1M   <= '1';
-                        Est     <= E33;
-                    end if;
-                                                                                                                     
-                when others =>
-                    rst     <= '1';
-                    CAP     <= '0';
-                    EN_1K   <= '0';                    
-                    EN_1M   <= '0';
-                    SEL     <= '0';
-                    T_ready <= '0';                   
-            end case;
+                        T_ready <= '0';                   
+                end case;            
+            end if;
         end if;
     end process;
 

@@ -14,7 +14,7 @@ end Control_Bus_out;
 
 architecture Behavioral of Control_Bus_out is
 signal imagen_size, kernel_size, Padding_size, Stride_size : integer;
-type estados is(ini,E1,E2,E3,E4,E5,E6);
+type estados is(ini,E1,E2,E3,E4,E5);
 signal Est  : estados;
 signal x : integer := 0;
 --     Bus_valid_Size <= "000" -- Tamaño de imagen 8x8
@@ -82,7 +82,7 @@ begin
                     Est  <= E3;
                     
                 when E3 =>
-                    if x = imagen_size-kernel_size+6 then
+                    if x = imagen_size - kernel_size + 1 - 2 then
                         CAP    <= '0';
                         EN_2   <= '0';
                         WAIT_0 <= '1';

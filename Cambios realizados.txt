@@ -1,4 +1,3 @@
-- Se modificó la máscara de la matriz.
-- Se completó la máquina de estados de Valid_Data incluyendo Stride de tres.
-- Se modificó la página de Excel de las combinaciones de Valid_Data para los estados de la nueva máquina de estados.
-- Se aplicaron los cambios para la máquina de estados Control_Bus_Out.
+- Se modificó el Control_Bus_In para descartar el clk_WAIT, usando la señal de Not_WAIT como señal de enable.
+- Se modificó también el Valid_Data para usar la señal de EN_1M como señal de enable, debido a dicho cambio se tuvo que cambiar la condición 1 de x= 135 * 4 + 5 a x= 134 * 4 + 4.
+- Se modificó el contador en el estado 3 del Control_Bus_Out

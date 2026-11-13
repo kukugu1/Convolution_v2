@@ -40,7 +40,6 @@ begin
     clk_EN_1K <= clk and EN_1K;
     EN_1      <= EN_1M OR EN_1K;
     Not_WAIT  <= NOT WAIT_0;
-    clk_WAIT  <= clk AND Not_WAIT;
     
     CBI : entity work.Control_Bus_in
     generic map(
@@ -48,9 +47,10 @@ begin
         matriz_size          => 128
     )
     port map(
-        clk            => clk_WAIT,
+        clk            => clk,
         selector       => selector,
         T_valid        => T_valid_in,
+        Not_WAIT       => Not_WAIT,
         Bus_valid_Size => Bus_valid_Size,
         kernel         => kernel,
         Padding        => Padding,
@@ -124,7 +124,8 @@ begin
         DELAY_VALID_OUT        => 8
     )
     port map(
-        clk              => clk_EN_1M,
+        clk              => clk,
+        enable           => EN_1M,
         Bus_valid_Size   => Bus_valid_Size,
         kernel           => kernel,
         Stride           => Stride,
@@ -163,8 +164,9 @@ begin
         NUM_REGS => 27
     )
     port map(
-        clk            => clk_EN_1M,
-        load           => AdderTree_Enable,
+        clk            => clk,
+        load_1         => AdderTree_Enable,
+        load_2         => VALID_OUT,
         Data_in_kernel => Registros_Kernel_Mask,
         Data_in_matriz => Registros_Matriz_Mask,
         Data_out_5x5   => Data_out_5x5, 

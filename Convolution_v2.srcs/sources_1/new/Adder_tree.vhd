@@ -8,13 +8,13 @@ entity Adder_tree is
         NUM_REGS : integer := 27
     );
     Port (
-        clk, load      : in std_logic;
-        Data_in_kernel : in Data_array(0 to NUM_REGS-1);
-        Data_in_matriz : in Data_array(0 to NUM_REGS-1);
-        Data_out_5x5   : out Vector_Array(0 to 0)(21 downto 0);
-        Data_out_4x4   : out Vector_Array(0 to 0)(21 downto 0);
-        Data_out_3x3   : out Vector_Array(0 to 0)(21 downto 0);
-        Data_out_2x2   : out Vector_Array(0 to 0)(21 downto 0)
+        clk, load_1, load_2 : in std_logic;
+        Data_in_kernel      : in Data_array(0 to NUM_REGS-1);
+        Data_in_matriz      : in Data_array(0 to NUM_REGS-1);
+        Data_out_5x5        : out Vector_Array(0 to 0)(21 downto 0);
+        Data_out_4x4        : out Vector_Array(0 to 0)(21 downto 0);
+        Data_out_3x3        : out Vector_Array(0 to 0)(21 downto 0);
+        Data_out_2x2        : out Vector_Array(0 to 0)(21 downto 0)
     );
 end Adder_tree;
 
@@ -37,11 +37,12 @@ architecture Behavioral of Adder_tree is
     signal k1x1        : Matrix_Array(0 to 3, 0 to 5)(15 downto 0); -- 4 datos de corrimiento de índice de registros 26, 18, 9 y 0. 6 ciclos de reloj de corrimiento.
     signal corrimiento : Matrix_Array(0 to 1, 0 to 1)(18 downto 0); -- 2 datos de corrimiento, ambos en el cuarto estado, donde máximo se hace un corrimiento de 2 ciclos de reloj. 
     
-    signal clk_load  : std_logic;
+    signal load      : std_logic;
 
 begin   
     
     --clk_load <= clk AND load;
+    load <= load_1 OR load_2;
     
     Registros : entity work.AT_Registros
     generic map(
