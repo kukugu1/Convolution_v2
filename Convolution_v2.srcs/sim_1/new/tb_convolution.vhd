@@ -94,7 +94,7 @@ begin
         T_valid_in <= '0';
         selector <= '0';
         
-        -- Filas 2 a 130 (comportamiento repetitivo)
+        -- Filas 2 a 5 (comportamiento repetitivo)
         for i in 2 to 5 loop
             selector   <= '0';   
             wait for 140*clk_period;

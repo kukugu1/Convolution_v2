@@ -127,7 +127,7 @@ begin
                         end if;
                                         
                     when E4 =>
-                        if c = 135-1 then
+                        if c = 134-1 then
                             c          <= 0;
                             y          <= y + 1;
                             Est        <= E5;

@@ -43,6 +43,7 @@ begin
         clk            => clk,
         selector       => selector,
         T_valid        => T_valid_in,
+        Not_WAIT       => '1',
         Bus_valid_Size => Bus_valid_Size,
         kernel         => kernel,
         Padding        => Padding,
@@ -116,7 +117,8 @@ begin
         DELAY_VALID_OUT        => 8
     )
     port map(
-        clk              => clk_EN_1M,
+        clk              => clk,
+        enable           => EN_1M,
         Bus_valid_Size   => Bus_valid_Size,
         kernel           => kernel,
         Stride           => Stride,
@@ -155,8 +157,9 @@ begin
         NUM_REGS => 27
     )
     port map(
-        clk            => clk_EN_1M,
-        load           => AdderTree_Enable,
+        clk            => clk,
+        load_1         => AdderTree_Enable,
+        load_2         => VALID_OUT,
         Data_in_kernel => Registros_Kernel_Mask,
         Data_in_matriz => Registros_Matriz_Mask,
         Data_out_5x5   => Data_out_5x5,

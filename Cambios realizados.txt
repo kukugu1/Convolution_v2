@@ -1,3 +1,2 @@
-- Se modificó el Control_Bus_In para descartar el clk_WAIT, usando la señal de Not_WAIT como señal de enable.
-- Se modificó también el Valid_Data para usar la señal de EN_1M como señal de enable, debido a dicho cambio se tuvo que cambiar la condición 1 de x= 135 * 4 + 5 a x= 134 * 4 + 4.
-- Se modificó el contador en el estado 3 del Control_Bus_Out
+- Se modificó el estado cuatro de Valid_Data necesario por los cambios debido a añadir un enable a la máquina de estado y quitar la señal de reloj clk con compuerta AND a EN_1M.
+- Se actualizó la IP que debería de funcionar con diferentes tamaños de imagen, de kernel y a valor fijo de Padding de cero y Stride de uno.
