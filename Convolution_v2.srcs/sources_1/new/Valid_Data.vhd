@@ -177,7 +177,7 @@ begin
                         -- ************ Stride 2 ************ 
                     
                     when E8 =>
-                        if x = 134 * 4 + 4 +5 - padding_size then
+                        if x = 134 * 4 + 4 - padding_size then
                             x   <= 0;
                             Est <= E9;
                         else
@@ -197,7 +197,7 @@ begin
                         Est        <= E11;
                                       
                     when E11 =>
-                        if x = (signal_mixer-kernel_size)/2 then
+                        if x = (signal_mixer - kernel_size) / 2 then
                             x          <= 0;
                             c          <= c + 1;
                             Est        <= E12;
@@ -209,7 +209,7 @@ begin
                         end if;   
                                          
                     when E12 =>
-                        if c = 135-1 then
+                        if c = 134 - 1 then
                             x   <= x + 1;
                             Est <= E13;
                         else
@@ -219,7 +219,7 @@ begin
                         end if;
                                             
                     when E13 =>
-                        if x = 135 then
+                        if x = 134 then
                             x   <= 0;
                             c   <= 0;
                             y   <= y + 1;
@@ -230,7 +230,7 @@ begin
                         end if;
                         
                     when E14 =>
-                        if y = (signal_mixer - kernel_size)/2 then
+                        if y = (signal_mixer - kernel_size) / 2 then
                             SR_Capture <= '1';
                             x          <= x + 1;
                             c          <= c + 1;
@@ -248,7 +248,7 @@ begin
                         Est        <= E16;
                         
                     when E16 =>
-                        if x=(signal_mixer-kernel_size)/2 then
+                        if x=(signal_mixer - kernel_size) / 2 then
                             x          <= 0;
                             c          <= c + 1;
                             Est        <= E17;
@@ -283,107 +283,108 @@ begin
                         
                         -- ************ Stride 3 ************
                     
-                    when E19 =>
-                        if x = 134 * 4 + 4 + 5 - padding_size then
-                            x   <= 0;
-                            Est <= E20;
-                        else
-                            x   <= x + 1;
-                            Est <= E19;
-                        end if;
+--                    when E19 =>
+--                        if x = 134 * 4 + 4 + 5 - padding_size then
+--                            x   <= 0;
+--                            Est <= E20;
+--                        else
+--                            x   <= x + 1;
+--                            Est <= E19;
+--                        end if;
                         
-                    when E20 =>
-                        SR_Capture <= '1';
-                        x          <= x + 1;
-                        c          <= c + 1;
-                        Est        <= E21;
+--                    when E20 =>
+--                        SR_Capture <= '1';
+--                        x          <= x + 1;
+--                        c          <= c + 1;
+--                        Est        <= E21;
                     
-                    when E21 =>
-                        SR_Capture <= '0';
-                        c          <= c + 1;
-                        Est        <= E22;
+--                    when E21 =>
+--                        SR_Capture <= '0';
+--                        c          <= c + 1;
+--                        Est        <= E22;
                         
-                    when E22 =>
-                        c   <= c + 1;
-                        Est <= E23;
+--                    when E22 =>
+--                        c   <= c + 1;
+--                        Est <= E23;
                         
-                    when E23 =>
-                        if x = (signal_mixer-kernel_size)/3 then
-                            x          <= 0;
-                            c          <= c + 1;
-                            Est        <= E24;
-                        else
-                            SR_Capture <= '1';
-                            x          <= x + 1;
-                            c          <= c + 1;
-                            Est        <= E21;
-                        end if;
+--                    when E23 =>
+--                        if x = (signal_mixer-kernel_size)/3 then
+--                            x          <= 0;
+--                            c          <= c + 1;
+--                            Est        <= E24;
+--                        else
+--                            SR_Capture <= '1';
+--                            x          <= x + 1;
+--                            c          <= c + 1;
+--                            Est        <= E21;
+--                        end if;
                         
-                    when E24 =>
-                        if c = 135 - 1 then
-                            x          <= x + 1;
-                            Est        <= E25;
-                        else
-                            x          <= 0;
-                            c          <= c + 1;
-                            Est        <= E24;
-                        end if;
+--                    when E24 =>
+--                        if c = 135 - 1 then
+--                            x          <= x + 1;
+--                            Est        <= E25;
+--                        else
+--                            x          <= 0;
+--                            c          <= c + 1;
+--                            Est        <= E24;
+--                        end if;
                         
-                    when E25 =>
-                        if x = 270 then
-                            x          <= 0;
-                            c          <= 0;
-                            y          <= y + 1;
-                            Est        <= E26;
-                        else
-                            x          <= x + 1;
-                            Est        <= E25;
-                        end if;
+--                    when E25 =>
+--                        if x = 270 then
+--                            x          <= 0;
+--                            c          <= 0;
+--                            y          <= y + 1;
+--                            Est        <= E26;
+--                        else
+--                            x          <= x + 1;
+--                            Est        <= E25;
+--                        end if;
                         
-                    when E26 =>
-                        if y = (signal_mixer-kernel_size)/3 then
-                            SR_Capture <= '1';
-                            x          <= x + 1;
-                            c          <= c + 1;
-                            Est        <= E27;
-                        else
-                            SR_Capture <= '1';
-                            x          <= x + 1;
-                            c          <= c + 1;
-                            Est        <= E21;
-                        end if;
+--                    when E26 =>
+--                        if y = (signal_mixer-kernel_size)/3 then
+--                            SR_Capture <= '1';
+--                            x          <= x + 1;
+--                            c          <= c + 1;
+--                            Est        <= E27;
+--                        else
+--                            SR_Capture <= '1';
+--                            x          <= x + 1;
+--                            c          <= c + 1;
+--                            Est        <= E21;
+--                        end if;
                         
-                    when E27 =>
-                            SR_Capture <= '0';
-                            c          <= c + 1;
-                            Est        <= E28;
+--                    when E27 =>
+--                            SR_Capture <= '0';
+--                            c          <= c + 1;
+--                            Est        <= E28;
                             
-                    when E28 =>
-                        c   <= c + 1;
-                        Est <= E29;
+--                    when E28 =>
+--                        c   <= c + 1;
+--                        Est <= E29;
                     
-                    when E29 =>
-                        if x = (signal_mixer-kernel_size)/3 then
-                            c          <= c + 1;
-                            Est        <= E30;
-                        else
-                            SR_Capture <= '1';
-                            x          <= x + 1;
-                            c          <= c + 1;
-                            Est        <= E27;
-                        end if;
+--                    when E29 =>
+--                        if x = (signal_mixer-kernel_size)/3 then
+--                            c          <= c + 1;
+--                            Est        <= E30;
+--                        else
+--                            SR_Capture <= '1';
+--                            x          <= x + 1;
+--                            c          <= c + 1;
+--                            Est        <= E27;
+--                        end if;
                         
-                    when E30 =>
-                        if c = 129 - 1 then
-                            SR_Capture <= '0';
-                            x          <= 0;
-                            c          <= 0;
-                            y          <= 0;
-                            Est        <= ini;
-                        else
-                            c          <= c + 1;
-                            Est        <= E30;
-                        end if;
+--                    when E30 =>
+--                        if c = 129 - 1 then
+--                            SR_Capture <= '0';
+--                            x          <= 0;
+--                            c          <= 0;
+--                            y          <= 0;
+--                            Est        <= ini;
+--                        else
+--                            c          <= c + 1;
+--                            Est        <= E30;
+--                        end if;
+
                     when others =>
                         SR_Capture <= '0';
                 end case;

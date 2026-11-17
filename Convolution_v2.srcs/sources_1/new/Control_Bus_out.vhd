@@ -82,7 +82,7 @@ begin
                     Est  <= E3;
                     
                 when E3 =>
-                    if x = imagen_size - kernel_size + 1 - 2 then
+                    if x = imagen_size - kernel_size + 1 - 2 + Padding_size then
                         CAP    <= '0';
                         EN_2   <= '0';
                         WAIT_0 <= '1';

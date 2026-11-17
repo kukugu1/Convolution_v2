@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
-      <ZoomEndTime time="200.000001 us"></ZoomEndTime>
-      <Cursor1Time time="183.455000 us"></Cursor1Time>
+      <ZoomStartTime time="6,105.269 ns"></ZoomStartTime>
+      <ZoomEndTime time="6,361.704 ns"></ZoomEndTime>
+      <Cursor1Time time="6,315.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="280"></NameColumnWidth>
-      <ValueColumnWidth column_width="107"></ValueColumnWidth>
+      <ValueColumnWidth column_width="97"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="8" />
    <wvobject fp_name="/tb_Test_Valid_Data/clk" type="logic">
@@ -77,6 +77,7 @@
    <wvobject fp_name="group23" type="group">
       <obj_property name="label">CONTROL BUS IN</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_Test_Valid_Data/uut/CBI/Est" type="other">
          <obj_property name="ElementShortName">Est</obj_property>
          <obj_property name="ObjectShortName">Est</obj_property>
@@ -249,6 +250,24 @@
       <obj_property name="label">ADDER TREE</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_Test_Valid_Data/uut/VD/AdderTree_Enable" type="logic">
+         <obj_property name="ElementShortName">AdderTree_Enable</obj_property>
+         <obj_property name="ObjectShortName">AdderTree_Enable</obj_property>
+         <obj_property name="CustomSignalColor">#800000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Test_Valid_Data/VALID_OUT" type="logic">
+         <obj_property name="ElementShortName">VALID_OUT</obj_property>
+         <obj_property name="ObjectShortName">VALID_OUT</obj_property>
+         <obj_property name="CustomSignalColor">#800000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_Test_Valid_Data/uut/AdderTree/load" type="logic">
+         <obj_property name="ElementShortName">load</obj_property>
+         <obj_property name="ObjectShortName">load</obj_property>
+         <obj_property name="CustomSignalColor">#800000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
       <wvobject fp_name="/tb_Test_Valid_Data/uut/AdderTree/Registros_kernel" type="array">
          <obj_property name="ElementShortName">Registros_kernel[0:26][7:0]</obj_property>
          <obj_property name="ObjectShortName">Registros_kernel[0:26][7:0]</obj_property>

@@ -3,7 +3,7 @@
   <spirit:vendor>xilinx.com</spirit:vendor>
   <spirit:library>user</spirit:library>
   <spirit:name>Convolution</spirit:name>
-  <spirit:version>2.0</spirit:version>
+  <spirit:version>3.0</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>clk</spirit:name>
@@ -36,7 +36,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>0efd1c98</spirit:value>
+            <spirit:value>b16b6b2d</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -52,7 +52,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>0efd1c98</spirit:value>
+            <spirit:value>b16b6b2d</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -67,7 +67,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>890f7de7</spirit:value>
+            <spirit:value>ff0bce63</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -459,14 +459,14 @@
     <spirit:fileSet>
       <spirit:name>xilinx_xpgui_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>xgui/Convolution_v2_0.tcl</spirit:name>
+        <spirit:name>xgui/Convolution_v3_0.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
         <spirit:userFileType>CHECKSUM_8d001e43</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
   </spirit:fileSets>
-  <spirit:description>OperaciÃ³n convoluciÃ³n funcional a diferentes valores de imagen, de kernel, y un valor fijo de Padding de 0 y Stride de 1.</spirit:description>
+  <spirit:description>OperaciÃ³n convoluciÃ³n funcional a diferentes valores de imagen, de kernel y Padding a un valor fijo de Stride de 1.</spirit:description>
   <spirit:parameters>
     <spirit:parameter>
       <spirit:name>Data_length</spirit:name>
@@ -515,15 +515,16 @@
       <xilinx:taxonomies>
         <xilinx:taxonomy>/UserIP</xilinx:taxonomy>
       </xilinx:taxonomies>
-      <xilinx:displayName>Convolution_v2_0</xilinx:displayName>
+      <xilinx:displayName>Convolution_v3_0</xilinx:displayName>
       <xilinx:definitionSource>package_project</xilinx:definitionSource>
-      <xilinx:coreRevision>4</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2026-11-16T19:25:18Z</xilinx:coreCreationDateTime>
+      <xilinx:vendorURL>https://odin.fi-b.unam.mx/liese/nosotros.html</xilinx:vendorURL>
+      <xilinx:coreRevision>5</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2026-11-17T20:04:56Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2024.2</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="a88d4390"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="00e5da94"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="af1b1507"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="19020f3b"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="a721d736"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="33cee4f7"/>
