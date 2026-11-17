@@ -59,7 +59,7 @@ begin
     padding_size <= 0 when Padding = "00" else 1 when Padding = "01" else
                     2 when Padding = "10" else 0;
     
-    signal_mixer <= imagen_size + padding_size;
+    signal_mixer <= imagen_size + 2 * padding_size;
     
     process(clk)
     begin
@@ -100,7 +100,7 @@ begin
                         -- ************ Stride 1 ************ 
                         
                     when E1 =>
-                        if x = 134 * 4 + 4 then
+                        if x = 134 * 4 + 4 - padding_size then
                             x          <= 0;
                             Est        <= E2;
                         else
@@ -127,7 +127,7 @@ begin
                         end if;
                                         
                     when E4 =>
-                        if c = 134-1 then
+                        if c = 134 - 1 then
                             c          <= 0;
                             y          <= y + 1;
                             Est        <= E5;
@@ -163,7 +163,7 @@ begin
                         end if;
                     
                     when E7 =>
-                        if c = 129 - 1 then
+                        if c = 129 - 1 + padding_size then
                             SR_Capture <= '0';
                             x          <= 0;
                             c          <= 0;
@@ -177,7 +177,7 @@ begin
                         -- ************ Stride 2 ************ 
                     
                     when E8 =>
-                        if x = 134 * 4 + 4 then
+                        if x = 134 * 4 + 4 +5 - padding_size then
                             x   <= 0;
                             Est <= E9;
                         else
@@ -284,7 +284,7 @@ begin
                         -- ************ Stride 3 ************
                     
                     when E19 =>
-                        if x= 134 * 4 + 4 then
+                        if x = 134 * 4 + 4 + 5 - padding_size then
                             x   <= 0;
                             Est <= E20;
                         else
