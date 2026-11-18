@@ -197,7 +197,7 @@ begin
                         Est        <= E11;
                                       
                     when E11 =>
-                        if x = (signal_mixer - kernel_size) / 2 then
+                        if x = ((signal_mixer - kernel_size) / 2) + 1 then
                             x          <= 0;
                             c          <= c + 1;
                             Est        <= E12;
@@ -248,7 +248,7 @@ begin
                         Est        <= E16;
                         
                     when E16 =>
-                        if x=(signal_mixer - kernel_size) / 2 then
+                        if x = ((signal_mixer - kernel_size) / 2) + 1 then
                             x          <= 0;
                             c          <= c + 1;
                             Est        <= E17;
@@ -260,16 +260,27 @@ begin
                         end if;
                     
                     when E17 =>
-                        if c = 135 - 1 then
-                            x          <= x + 1;
-                            Est        <= E18;
+                        if kernel_size = 5 OR kernel_size = 3 then
+                            x   <= 0;
+                            c   <= c + 1;
+                            Est <= E18;
                         else
-                            x          <= 0;
-                            c          <= c + 1;
-                            Est        <= E17;
+                            x   <= 0;
+                            c   <= c + 1;
+                            Est <= E20;
                         end if;
                     
                     when E18 =>
+                        if c = 134 - 1 then
+                            x   <= x + 1;
+                            Est <= E19;
+                        else
+                            x   <= 0;
+                            c   <= c + 1;
+                            Est <= E18;
+                        end if;
+                        
+                    when E19 =>
                         if x = 129 then
                             SR_Capture <= '0';
                             x          <= 0;
@@ -277,10 +288,21 @@ begin
                             y          <= 0;
                             Est        <= ini;
                         else
-                            x   <= x + 1;
-                            Est <= E18;
+                            x          <= x + 1;
+                            Est        <= E19;
                         end if;
                         
+                    when E20 =>
+                        if c = 129 - 1 then
+                            SR_Capture <= '0';
+                            x          <= 0;
+                            c          <= 0;
+                            y          <= 0;
+                            Est        <= ini;
+                        else
+                            x          <= 0;
+                            Est        <= E20;
+                        end if;
                         -- ************ Stride 3 ************
                     
 --                    when E19 =>

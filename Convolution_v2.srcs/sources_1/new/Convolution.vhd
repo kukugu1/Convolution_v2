@@ -165,8 +165,7 @@ begin
     )
     port map(
         clk            => clk,
-        load_1         => AdderTree_Enable,
-        load_2         => VALID_OUT,
+        load           => AdderTree_Enable,
         Data_in_kernel => Registros_Kernel_Mask,
         Data_in_matriz => Registros_Matriz_Mask,
         Data_out_5x5   => Data_out_5x5, 

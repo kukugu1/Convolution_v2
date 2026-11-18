@@ -1,2 +1,2 @@
-- Se modificó el estado cuatro de Valid_Data necesario por los cambios debido a añadir un enable a la máquina de estado y quitar la señal de reloj clk con compuerta AND a EN_1M.
-- Se actualizó la IP que debería de funcionar con diferentes tamaños de imagen, de kernel y a valor fijo de Padding de cero y Stride de uno.
+- Se modificó el Adder_Tree para que solo el paso de registros sea dependiente de la señal AdderTree_Enable.
+- Se modificó el Valid_Data para que funcione a Stride de dos.

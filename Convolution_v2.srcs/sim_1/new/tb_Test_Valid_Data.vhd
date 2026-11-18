@@ -69,7 +69,7 @@ begin
         
         Bus_valid_Size <= "100"; --128x128
         Padding <= "00"; -- Padding de cero
-        kernel <= "11"; -- kernel de 5x5
+        kernel <= "00"; -- kernel de 5x5
         Stride <= "10"; -- Stride de 2
         
         --Se llena el kernel

@@ -158,15 +158,14 @@ begin
     )
     port map(
         clk            => clk,
-        load_1         => AdderTree_Enable,
-        load_2         => VALID_OUT,
+        load           => AdderTree_Enable,
         Data_in_kernel => Registros_Kernel_Mask,
         Data_in_matriz => Registros_Matriz_Mask,
         Data_out_5x5   => Data_out_5x5,
         Data_out_4x4   => Data_out_4x4,
         Data_out_3x3   => Data_out_3x3,
         Data_out_2x2   => Data_out_2x2
-    );            
+    );
     
     Adder_Tree_Mask : entity work.Mask_Adder_tree
     port map(
